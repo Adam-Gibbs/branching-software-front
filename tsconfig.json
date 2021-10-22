@@ -14,8 +14,6 @@
     "types": [
       "webpack-env",
       "mocha",
-      "@wdio/mocha-framework",
-      "@wdio/sync"
     ],
     "paths": {
       "@/*": [
