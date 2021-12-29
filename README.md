@@ -1,4 +1,4 @@
-# under-construction
+# landing-page
 
 ## Project setup
 ```
