@@ -1,7 +1,6 @@
-const colors = require("tailwindcss/colors");
-
 module.exports = {
   purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  content: ["./src/**/*.{html,js}"],
   mode: "jit",
   theme: {
     fontFamily: {
@@ -11,11 +10,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        midGreen: '#30a51b',
+        midGreen: "#30a51b",
         backgroundGreen: "#e9f5e7",
         startGrad: "#5a5a2d",
         endGrad: "#0de30d",
-        cyan: colors.cyan,
       },
     },
   },
