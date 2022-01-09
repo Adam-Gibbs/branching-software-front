@@ -1,0 +1,26 @@
+<template>
+  <nav class="lg:hidden py-6 px-6 border-b">
+    <div class="flex items-center justify-between">
+      <a class="text-2xl font-semibold" href="#">
+        <img
+          class="h-10"
+          src="@/assets/icon.svg"
+          alt="Icon for Branching Software"
+          width="auto"
+      /></a>
+      <button
+        class="navbar-burger flex items-center rounded focus:outline-none"
+      >
+        <svg
+          class="text-white bg-green-main hover:bg-green-highlight block h-8 w-8 p-2 rounded"
+          viewbox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+        >
+          <title>Mobile menu</title>
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</template>
