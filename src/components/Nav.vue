@@ -1,8 +1,9 @@
 <template>
-  <BurgerButton />
-  <div class="hidden lg:block navbar-menu relative z-50">
+  <BurgerButton :open="open" @toggleOpen="toggleOpen($event)" />
+  <div class="lg:block navbar-menu relative z-50" :class="{ hidden: open }">
     <div
       class="navbar-backdrop fixed lg:hidden inset-0 bg-gray-800 opacity-10"
+      @click="toggleOpen(true)"
     ></div>
     <nav
       class="fixed top-0 left-0 bottom-0 flex flex-col w-3/4 lg:w-80 sm:max-w-xs pt-6 pb-8 bg-white border-r overflow-y-auto"
@@ -15,7 +16,6 @@
             class="h-10"
             src="@/assets/icon.svg"
             alt="Icon for Branching Software"
-            width="auto"
         /></a>
       </div>
       <div class="px-4 pb-6">
@@ -23,24 +23,65 @@
           DASHBOARD
         </h3>
         <ul class="mb-8 text-sm font-medium">
-          <Link title="Overview" image="nav/Overview.svg" path="/" />
-          <Link title="Past Year" image="nav/Past.svg" path="/past" />
-          <Link title="Current Stats" image="nav/Current.svg" path="/current" />
+          <Link
+            title="Overview"
+            image="nav/Overview.svg"
+            path="/"
+            @toggleOpen="toggleOpen($event)"
+          />
+          <Link
+            title="Past Year"
+            image="nav/Past.svg"
+            path="/past"
+            @toggleOpen="toggleOpen($event)"
+          />
+          <Link
+            title="Current Stats"
+            image="nav/Current.svg"
+            path="/current"
+            @toggleOpen="toggleOpen($event)"
+          />
           <Link
             title="Future Predictions"
             image="nav/Future.svg"
             path="/future"
+            @toggleOpen="toggleOpen($event)"
           />
-          <Link title="Goals" image="nav/Goals.svg" path="/goals" />
+          <Link
+            title="Goals"
+            image="nav/Goals.svg"
+            path="/goals"
+            @toggleOpen="toggleOpen($event)"
+          />
         </ul>
         <h3 class="mb-2 text-xs uppercase text-gray-400 font-medium">
           Secondary
         </h3>
         <ul class="text-sm font-medium">
-          <Link title="Support" image="nav/Support.svg" path="/support" />
-          <Link title="Inbox" image="nav/Inbox.svg" path="/inbox" />
-          <Link title="File Manager" image="nav/File.svg" path="/files" />
-          <Link title="Data List" image="nav/Data.svg" path="/data" />
+          <Link
+            title="Support"
+            image="nav/Support.svg"
+            path="/support"
+            @toggleOpen="toggleOpen($event)"
+          />
+          <Link
+            title="Inbox"
+            image="nav/Inbox.svg"
+            path="/inbox"
+            @toggleOpen="toggleOpen($event)"
+          />
+          <Link
+            title="File Manager"
+            image="nav/File.svg"
+            path="/files"
+            @toggleOpen="toggleOpen($event)"
+          />
+          <Link
+            title="Data List"
+            image="nav/Data.svg"
+            path="/data"
+            @toggleOpen="toggleOpen($event)"
+          />
         </ul>
         <div class="pt-8">
           <ul>
@@ -48,12 +89,14 @@
               title="Settings"
               image="general/Settings.svg"
               path="/settings"
+              @toggleOpen="toggleOpen($event)"
             />
             <Link
               title="Log out"
               image="nav/Out.svg"
               background="red"
               path="/logout"
+              @toggleOpen="toggleOpen($event)"
             />
           </ul>
         </div>
@@ -69,5 +112,15 @@ import BurgerButton from "./nav_components/BurgerButton.vue";
 
 export default defineComponent({
   components: { Link, BurgerButton },
+  data: function () {
+    return {
+      open: true,
+    };
+  },
+  methods: {
+    toggleOpen: function (newValue: boolean) {
+      this.open = newValue;
+    },
+  },
 });
 </script>

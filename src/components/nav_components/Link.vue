@@ -8,6 +8,7 @@
           : `hover:bg-${background}-light text-gray-500`
       "
       :to="path"
+      @click="toggleOpen()"
     >
       <span class="inline-block mr-3">
         <!-- This is causing the XML errors -->
@@ -64,6 +65,9 @@ export default defineComponent({
     currentRoute: function () {
       // return true if current path equals path
       return this.$route.path === this.path;
+    },
+    toggleOpen: function () {
+      this.$emit("toggleOpen", true);
     },
   },
 });
