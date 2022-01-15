@@ -11,13 +11,14 @@
       @click="toggleOpen()"
     >
       <span class="inline-block mr-3">
-        <!-- This is causing the XML errors -->
-        <object
-          class="text-gray-200 w-5 h-5"
-          :data="require(`@/assets/${image}`)"
-        >
-          Icon for {{ title }}
-        </object>
+        <font-awesome-icon
+          :icon="icon"
+          class="w-5 h-5"
+          :class="{
+            'text-gray-400': !currentRoute(),
+            'text-white': currentRoute(),
+          }"
+        />
       </span>
       <span>{{ title }}</span>
       <span
@@ -25,11 +26,13 @@
         class="flex justify-center items-center ml-auto w-6 h-6 text-white text-xs rounded-full bg-green-main"
         >{{ notification }}</span
       >
-      <img
-        v-show="notification === 0"
-        class="flex justify-center items-center ml-auto w-3 h-3 text-white"
-        src="@/assets/nav/Arrow.svg"
-        alt="Arrow"
+      <font-awesome-icon
+        icon="chevron-right"
+        class="flex justify-center items-center ml-auto w-4 h-4"
+        :class="{
+          'text-gray-400': !currentRoute(),
+          'text-white': currentRoute(),
+        }"
       />
     </router-link>
   </li>
@@ -44,7 +47,7 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    image: {
+    icon: {
       type: String,
       required: true,
     },

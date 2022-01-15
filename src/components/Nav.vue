@@ -25,31 +25,31 @@
         <ul class="mb-8 text-sm font-medium">
           <Link
             title="Overview"
-            image="nav/Overview.svg"
+            icon="infinity"
             path="/"
             @toggleOpen="toggleOpen($event)"
           />
           <Link
             title="Past Year"
-            image="nav/Past.svg"
+            icon="history"
             path="/past"
             @toggleOpen="toggleOpen($event)"
           />
           <Link
             title="Current Stats"
-            image="nav/Current.svg"
+            icon="mouse-pointer"
             path="/current"
             @toggleOpen="toggleOpen($event)"
           />
           <Link
             title="Future Predictions"
-            image="nav/Future.svg"
+            icon="bullseye"
             path="/future"
             @toggleOpen="toggleOpen($event)"
           />
           <Link
             title="Goals"
-            image="nav/Goals.svg"
+            icon="medal"
             path="/goals"
             @toggleOpen="toggleOpen($event)"
           />
