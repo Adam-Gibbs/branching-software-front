@@ -9,6 +9,7 @@ import {
   faChevronRight,
   faMousePointer,
   faFileDownload,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -20,7 +21,8 @@ library.add(
   faMedal,
   faChevronRight,
   faMousePointer,
-  faFileDownload
+  faFileDownload,
+  faTrash
 );
 
 export default FontAwesomeIcon;
