@@ -8,38 +8,46 @@
           alt="Icon for Branching Software"
         />
         <div class="mt-12 mb-8 p-8 bg-white rounded">
-          <span class="text-sm text-gray-600" data-config-id="caption"
-            >Sign In</span
-          >
-          <h4 class="mb-6 text-3xl" data-config-id="header">Path To Zero</h4>
-          <div class="flex mb-4 px-4 rounded">
-            <input
-              class="w-full py-4 text-s placeholder-gray-400 font-semibold leading-none outline-none"
-              type="email"
-              placeholder="Email"
-            />
-            <font-awesome-icon
-              icon="at"
-              class="h-6 w-6 my-auto text-gray-400"
-            />
-          </div>
-          <div class="flex mb-6 px-4 rounded">
-            <input
-              class="w-full py-4 text-s placeholder-gray-400 font-semibold leading-none outline-none"
-              type="password"
-              placeholder="Password"
-            />
-            <font-awesome-icon
-              icon="key"
-              class="h-6 w-6 my-auto text-gray-400"
-            />
-          </div>
-          <a
-            class="block w-full p-4 text-center text-xs text-white font-semibold leading-none bg-green-main hover:bg-green-highlight rounded"
-            href="/"
-          >
-            Sign In
-          </a>
+          <span class="text-sm text-gray-600">Sign In</span>
+          <h4 class="mb-6 text-3xl">Path To Zero</h4>
+          <Warning
+            v-for="item in warningList"
+            :text="item"
+            :key="item"
+            @removeWarning="removeWarning($event)"
+          />
+          <form>
+            <div class="flex my-4 px-4 rounded">
+              <input
+                class="w-full py-4 text-sm placeholder-gray-400 font-semibold leading-none outline-none"
+                type="email"
+                v-model="email"
+                placeholder="Email"
+              />
+              <font-awesome-icon
+                icon="at"
+                class="h-6 w-6 my-auto text-gray-400"
+              />
+            </div>
+            <div class="flex mb-6 px-4 rounded">
+              <input
+                class="w-full py-4 text-sm placeholder-gray-400 font-semibold leading-none outline-none"
+                type="password"
+                v-model="password"
+                placeholder="Password"
+              />
+              <font-awesome-icon
+                icon="key"
+                class="h-6 w-6 my-auto text-gray-400"
+              />
+            </div>
+            <button
+              class="block w-full p-4 text-center text-xs text-white font-semibold leading-none bg-green-main hover:bg-green-highlight rounded"
+              @click.prevent="signIn"
+            >
+              Sign In
+            </button>
+          </form>
           <div class="block mt-3">
             <a
               class="m-3 text-xs text-green-main text-center"
@@ -69,3 +77,44 @@
     </div>
   </section>
 </template>
+
+<script>
+import router from "@/router";
+import { defineComponent } from "vue";
+import Warning from "@/components/alerts/Warning";
+
+export default defineComponent({
+  components: {
+    Warning,
+  },
+  data() {
+    return {
+      email: "",
+      password: "",
+      warningList: [],
+    };
+  },
+  methods: {
+    signIn() {
+      this.warningList = [];
+      if (this.email === "") {
+        this.addWarning("Email is required");
+      }
+      if (this.password === "") {
+        this.addWarning("Password is required");
+      }
+      if (this.warningList.length === 0) {
+        router.push("Overview");
+      }
+    },
+    addWarning(text) {
+      if (!this.warningList.includes(text)) {
+        this.warningList.push(text);
+      }
+    },
+    removeWarning(text) {
+      this.warningList.splice(this.warningList.indexOf(text), 1);
+    },
+  },
+});
+</script>
