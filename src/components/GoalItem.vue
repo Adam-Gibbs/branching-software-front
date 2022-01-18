@@ -2,7 +2,7 @@
   <div class="p-6 bg-white shadow rounded">
     <div class="flex mb-3 items-center justify-between">
       <h3 class="text-gray-800 font-bold text-xl">{{ title }}</h3>
-      <button>
+      <button @click="emitAddDelete()">
         <font-awesome-icon icon="trash" class="h-4 w-4 text-gray-400" />
       </button>
     </div>
@@ -43,6 +43,10 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    deleteLink: {
+      type: String,
+      required: true,
+    },
     change: {
       type: String,
       default: "",
@@ -66,6 +70,9 @@ export default defineComponent({
     randomColour() {
       const indexColor = this.random(0, this.colors.length - 1);
       return `bg-${this.colors[indexColor]}-${this.random(4, 4)}00`;
+    },
+    emitAddDelete: function () {
+      this.$emit("addDelete", this.deleteLink);
     },
   },
   data: function () {

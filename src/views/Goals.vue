@@ -14,6 +14,7 @@
           progress: '20',
           change: '+12%',
           subtitle: 'This is a sub',
+          deleteLink: '#',
         },
         {
           title: 'this is also',
@@ -21,6 +22,7 @@
           progress: '35',
           change: '-52%',
           subtitle: 'This is another',
+          deleteLink: '#2',
         },
       ]"
     />
