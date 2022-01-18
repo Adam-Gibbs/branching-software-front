@@ -3,8 +3,13 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "Main",
+    name: "Overview",
     component: () => import("../views/Overview.vue"),
+  },
+  {
+    path: "/signin",
+    name: "Sign In",
+    component: () => import("../views/SignIn.vue"),
   },
   {
     path: "/past",
@@ -25,6 +30,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/goals",
     name: "Goals",
     component: () => import("../views/Goals.vue"),
+  },
+  {
+    path: "/upcoming",
+    name: "Upcoming",
+    component: () => import("../views/Upcoming.vue"),
   },
   {
     path: "/:catchAll(.*)",
