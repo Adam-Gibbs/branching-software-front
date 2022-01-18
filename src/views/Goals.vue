@@ -1,4 +1,5 @@
 <template>
+  <Nav />
   <div class="mx-auto lg:ml-80">
     <Header
       icon="medal"
@@ -33,10 +34,12 @@
 import { defineComponent } from "vue";
 import Header from "@/components/Header.vue";
 import GoalRows from "@/components/GoalRows.vue";
+import Nav from "@/components/Nav.vue";
 
 export default defineComponent({
   name: "App",
   components: {
+    Nav,
     Header,
     GoalRows,
   },

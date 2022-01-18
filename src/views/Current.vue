@@ -1,4 +1,5 @@
 <template>
+  <Nav />
   <div class="mx-auto lg:ml-80">
     <Header
       icon="mouse-pointer"
@@ -27,10 +28,12 @@ import { defineComponent } from "vue";
 import Header from "@/components/Header.vue";
 import LongBar from "@/components/graphs/LongBar.vue";
 import LineMix from "@/components/graphs/LineMix.vue";
+import Nav from "@/components/Nav.vue";
 
 export default defineComponent({
   name: "App",
   components: {
+    Nav,
     Header,
     LongBar,
     LineMix,

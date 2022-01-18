@@ -20,7 +20,7 @@
       </div>
       <div class="px-4 pb-6">
         <h3 class="mb-2 text-xs uppercase text-gray-400 font-medium">
-          DASHBOARD
+          Dashboard
         </h3>
         <ul class="mb-8 text-sm font-medium">
           <Link
@@ -54,31 +54,29 @@
             @toggleOpen="toggleOpen($event)"
           />
         </ul>
-        <h3 class="mb-2 text-xs uppercase text-gray-400 font-medium">
-          Secondary
-        </h3>
+        <h3 class="mb-2 text-xs uppercase text-gray-400 font-medium">Assets</h3>
         <ul class="text-sm font-medium">
           <Link
-            title="Support"
-            image="nav/Support.svg"
-            path="/support"
+            title="Upcoming Assets"
+            icon="exchange-alt"
+            path="/upcoming"
             @toggleOpen="toggleOpen($event)"
           />
           <Link
             title="Inbox"
-            image="nav/Inbox.svg"
+            icon="nav/Inbox.svg"
             path="/inbox"
             @toggleOpen="toggleOpen($event)"
           />
           <Link
             title="File Manager"
-            image="nav/File.svg"
+            icon="nav/File.svg"
             path="/files"
             @toggleOpen="toggleOpen($event)"
           />
           <Link
             title="Data List"
-            image="nav/Data.svg"
+            icon="nav/Data.svg"
             path="/data"
             @toggleOpen="toggleOpen($event)"
           />
@@ -87,15 +85,15 @@
           <ul>
             <Link
               title="Settings"
-              image="general/Settings.svg"
+              icon="cog"
               path="/settings"
               @toggleOpen="toggleOpen($event)"
             />
             <Link
               title="Log out"
-              image="nav/Out.svg"
+              icon="sign-out"
               background="red"
-              path="/logout"
+              path="/signin"
               @toggleOpen="toggleOpen($event)"
             />
           </ul>

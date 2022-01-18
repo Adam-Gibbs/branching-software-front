@@ -1,7 +1,7 @@
 <template>
   <div class="p-6 bg-white shadow rounded">
     <div class="flex mb-3 items-center justify-between">
-      <h3 class="text-gray-800 font-bold text-xl">{{ title }}</h3>
+      <h3 class="text-gray-800 uppercase font-bold text-xl">{{ title }}</h3>
       <button @click="emitAddDelete()">
         <font-awesome-icon icon="trash" class="h-4 w-4 text-gray-400" />
       </button>
