@@ -2,7 +2,7 @@
   <Nav />
   <div class="mx-auto lg:ml-80">
     <Header
-      icon="mouse-pointer"
+      icon="bullseye"
       title="Current Stats"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non
               commodo purus."

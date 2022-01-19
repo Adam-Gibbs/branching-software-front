@@ -27,11 +27,6 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/Current.vue"),
   },
   {
-    path: "/future",
-    name: "Future Predictions",
-    component: () => import("../views/Future.vue"),
-  },
-  {
     path: "/goals",
     name: "Goals",
     component: () => import("../views/Goals.vue"),
@@ -50,11 +45,6 @@ const routes: Array<RouteRecordRaw> = [
     path: "/add",
     name: "Add Asset",
     component: () => import("../views/AddAsset.vue"),
-  },
-  {
-    path: "/update",
-    name: "Update Asset",
-    component: () => import("../views/UpdateAsset.vue"),
   },
   {
     path: "/:catchAll(.*)",

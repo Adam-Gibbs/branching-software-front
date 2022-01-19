@@ -38,14 +38,8 @@
           />
           <Link
             title="Current Stats"
-            icon="mouse-pointer"
-            path="/current"
-            @toggleOpen="toggleOpen($event)"
-          />
-          <Link
-            title="Future Predictions"
             icon="bullseye"
-            path="/future"
+            path="/current"
             @toggleOpen="toggleOpen($event)"
           />
           <Link
@@ -73,12 +67,6 @@
             title="Add Asset"
             icon="plus"
             path="/add"
-            @toggleOpen="toggleOpen($event)"
-          />
-          <Link
-            title="Update Asset"
-            icon="edit"
-            path="/update"
             @toggleOpen="toggleOpen($event)"
           />
         </ul>
