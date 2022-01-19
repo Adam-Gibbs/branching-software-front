@@ -11,12 +11,13 @@
       <div
         class="flex w-full items-center px-6 pb-6 mb-6 lg:border-b border-blue-50"
       >
-        <a class="text-xl font-semibold" href="#">
+        <a class="text-xl font-semibold" href="/">
           <img
             class="h-10"
             src="@/assets/icon.svg"
             alt="Icon for Branching Software"
-        /></a>
+          />
+        </a>
       </div>
       <div class="px-4 pb-6">
         <h3 class="mb-2 text-xs uppercase text-gray-400 font-medium">
@@ -63,21 +64,21 @@
             @toggleOpen="toggleOpen($event)"
           />
           <Link
-            title="Inbox"
-            icon="nav/Inbox.svg"
-            path="/inbox"
+            title="All Assets"
+            icon="drafting-compass"
+            path="/assets"
             @toggleOpen="toggleOpen($event)"
           />
           <Link
-            title="File Manager"
-            icon="nav/File.svg"
-            path="/files"
+            title="Add Asset"
+            icon="plus"
+            path="/add"
             @toggleOpen="toggleOpen($event)"
           />
           <Link
-            title="Data List"
-            icon="nav/Data.svg"
-            path="/data"
+            title="Update Asset"
+            icon="edit"
+            path="/update"
             @toggleOpen="toggleOpen($event)"
           />
         </ul>

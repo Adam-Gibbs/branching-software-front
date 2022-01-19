@@ -26,6 +26,11 @@ import {
   faSitemap,
   faSortUp,
   faSortDown,
+  faDraftingCompass,
+  faPlus,
+  faEdit,
+  faLongArrowAltRight,
+  faLongArrowAltLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -54,7 +59,12 @@ library.add(
   faThermometerFull,
   faSitemap,
   faSortUp,
-  faSortDown
+  faSortDown,
+  faDraftingCompass,
+  faPlus,
+  faEdit,
+  faLongArrowAltRight,
+  faLongArrowAltLeft
 );
 
 export default FontAwesomeIcon;

@@ -42,9 +42,24 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/Upcoming.vue"),
   },
   {
+    path: "/assets",
+    name: "All Assets",
+    component: () => import("../views/Assets.vue"),
+  },
+  {
+    path: "/add",
+    name: "Add Asset",
+    component: () => import("../views/AddAsset.vue"),
+  },
+  {
+    path: "/update",
+    name: "Update Asset",
+    component: () => import("../views/UpdateAsset.vue"),
+  },
+  {
     path: "/:catchAll(.*)",
     name: "Else",
-    component: () => import("../views/Overview.vue"),
+    component: () => import("../views/404.vue"),
   },
 ];
 
