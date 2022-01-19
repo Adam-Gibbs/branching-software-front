@@ -10,6 +10,22 @@ import {
   faMousePointer,
   faFileDownload,
   faTrash,
+  faExchangeAlt,
+  faSignOut,
+  faArrowDown,
+  faAt,
+  faKey,
+  faExclamationTriangle,
+  faTimes,
+  faSignature,
+  faUser,
+  faCloud,
+  faSort,
+  faThermometerEmpty,
+  faThermometerFull,
+  faSitemap,
+  faSortUp,
+  faSortDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -22,7 +38,23 @@ library.add(
   faChevronRight,
   faMousePointer,
   faFileDownload,
-  faTrash
+  faTrash,
+  faExchangeAlt,
+  faSignOut,
+  faArrowDown,
+  faAt,
+  faKey,
+  faExclamationTriangle,
+  faTimes,
+  faSignature,
+  faUser,
+  faCloud,
+  faSort,
+  faThermometerEmpty,
+  faThermometerFull,
+  faSitemap,
+  faSortUp,
+  faSortDown
 );
 
 export default FontAwesomeIcon;
