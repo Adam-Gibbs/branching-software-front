@@ -5,7 +5,7 @@
     description="Details about the assets estimated CO2 emissions."
     icon="smog"
   />
-  <Text
+  <Number
     title="Yearly Asset Emissions (kg)"
     placeholder="250"
     ref="co2"
@@ -25,7 +25,7 @@
 import { defineComponent } from "vue";
 import Progress from "@/components/wizard/Progress.vue";
 import Title from "@/components/wizard/Title.vue";
-import Text from "@/components/wizard/Text.vue";
+import Number from "@/components/wizard/Number.vue";
 import Buttons from "@/components/wizard/Buttons.vue";
 
 export default defineComponent({
@@ -33,7 +33,7 @@ export default defineComponent({
     Progress,
     Title,
     Buttons,
-    Text,
+    Number,
   },
   props: {
     values: {
