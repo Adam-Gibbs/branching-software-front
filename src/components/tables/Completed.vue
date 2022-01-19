@@ -39,7 +39,7 @@
           <p class="text-base">{{ asset.location }}</p>
         </td>
         <td class="font-medium">
-          <p class="text-base">{{ asset.co2 }}</p>
+          <p class="text-base">{{ asset.co2 }}kg</p>
         </td>
         <td class="font-medium">
           <p class="text-base">{{ asset.eol }}</p>

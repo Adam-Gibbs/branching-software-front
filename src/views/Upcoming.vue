@@ -13,9 +13,18 @@
           <div class="px-6 border-b border-blue-50">
             <div class="flex flex-wrap items-center mb-4">
               <div>
-                <h3 class="text-xl font-bold">Assets due Replacement</h3>
-                <p class="text-sm text-gray-500 font-medium">
+                <h3 class="text-xl font-bold" v-if="!completed">
+                  Assets due Replacement
+                </h3>
+                <h3 class="text-xl font-bold" v-if="completed">
+                  Assets Replaced
+                </h3>
+                <p class="text-sm text-gray-500 font-medium" v-if="!completed">
                   List of Assets close to their estimated end of life (EOL)
+                </p>
+                <p class="text-sm text-gray-500 font-medium" v-if="completed">
+                  List of Assets who have passed their estimated end of life
+                  (EOL)
                 </p>
               </div>
             </div>
@@ -73,7 +82,7 @@
                 class="inline-flex items-center text-xs text-green-main hover:text-green-highlight font-medium"
               >
                 <font-awesome-icon icon="arrow-down" class="w-5 h-5 mr-1" />
-                <span>See more Projects</span>
+                <span>See more Assets</span>
               </a>
             </div>
           </div>
