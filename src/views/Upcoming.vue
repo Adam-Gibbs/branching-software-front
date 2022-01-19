@@ -100,7 +100,6 @@ import Completed from "@/components/tables/Completed.vue";
 import Nav from "@/components/Nav.vue";
 
 export default defineComponent({
-  name: "App",
   components: {
     Nav,
     Header,

@@ -67,7 +67,6 @@ import Nav from "@/components/Nav.vue";
 import AllAssets from "@/components/tables/All.vue";
 
 export default defineComponent({
-  name: "App",
   components: {
     Nav,
     Header,

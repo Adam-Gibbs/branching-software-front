@@ -37,7 +37,6 @@ import GoalRows from "@/components/GoalRows.vue";
 import Nav from "@/components/Nav.vue";
 
 export default defineComponent({
-  name: "App",
   components: {
     Nav,
     Header,

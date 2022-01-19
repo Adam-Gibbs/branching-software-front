@@ -155,7 +155,6 @@ export default defineComponent({
     validatePassword() {
       if (this.password.length < 8) {
         this.addWarning("Password must be at least 8 characters");
-        console.log(this.password.length);
       }
     },
     addWarning(text) {
