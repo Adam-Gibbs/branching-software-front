@@ -7,19 +7,21 @@
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non
               commodo purus."
     />
+    <add-wizard />
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from "vue";
 import Header from "@/components/Header.vue";
 import Nav from "@/components/Nav.vue";
+import AddWizard from "@/components/wizard/add/AddWizard.vue";
 
 export default defineComponent({
-  name: "App",
   components: {
     Nav,
     Header,
+    AddWizard,
   },
 });
 </script>

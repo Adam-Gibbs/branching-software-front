@@ -7,6 +7,7 @@ import {
   faBullseye,
   faMedal,
   faChevronRight,
+  faChevronLeft,
   faMousePointer,
   faFileDownload,
   faTrash,
@@ -31,6 +32,12 @@ import {
   faEdit,
   faLongArrowAltRight,
   faLongArrowAltLeft,
+  faTape,
+  faPaperPlane,
+  faCamera,
+  faCalendarDay,
+  faCompass,
+  faSmog,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -41,6 +48,7 @@ library.add(
   faBullseye,
   faMedal,
   faChevronRight,
+  faChevronLeft,
   faMousePointer,
   faFileDownload,
   faTrash,
@@ -64,7 +72,13 @@ library.add(
   faPlus,
   faEdit,
   faLongArrowAltRight,
-  faLongArrowAltLeft
+  faLongArrowAltLeft,
+  faTape,
+  faPaperPlane,
+  faCamera,
+  faCalendarDay,
+  faCompass,
+  faSmog
 );
 
 export default FontAwesomeIcon;
