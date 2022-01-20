@@ -67,7 +67,6 @@ export default defineComponent({
       this.emptyFields = [];
       this.$refs.location.checkEmpty();
       this.$refs.eol.checkEmpty();
-      console.log(this.emptyFields);
     },
     getValues() {
       return {

@@ -42,7 +42,6 @@ export default defineComponent({
   },
   methods: {
     handleForm() {
-      console.log(this.data);
       this.data = {};
       this.page = 1;
     },

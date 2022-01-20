@@ -53,7 +53,6 @@ export default defineComponent({
   },
   methods: {
     checkEmpty() {
-      console.log(this.required);
       if (this.required) {
         if (this.item === "") {
           this.alert = true;

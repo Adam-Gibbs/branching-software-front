@@ -50,7 +50,6 @@ export default defineComponent({
     checkEmpty() {
       this.emptyFields = [];
       this.$refs.co2.checkEmpty();
-      console.log(this.emptyFields);
     },
     getValues() {
       return {
