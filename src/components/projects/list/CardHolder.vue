@@ -89,7 +89,7 @@ export default defineComponent({
       this.showFinished = !this.showFinished;
     },
     goTo(id: string) {
-      this.$router.push(`/projects/proposals/${id}`);
+      this.$router.push(`/projects/view/${id}`);
     },
   },
   data: function () {

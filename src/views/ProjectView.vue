@@ -7,6 +7,7 @@
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non
               commodo purus."
     />
+    <Base />
   </div>
 </template>
 
@@ -14,11 +15,13 @@
 import { defineComponent } from "vue";
 import Header from "@/components/Header.vue";
 import Nav from "@/components/Nav.vue";
+import Base from "@/components/projects/view/Base.vue";
 
 export default defineComponent({
   components: {
     Nav,
     Header,
+    Base,
   },
   data: function () {
     return {
