@@ -42,6 +42,8 @@ import {
   faTimes,
   faTrash,
   faUser,
+  faClipboardList,
+  faClock,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -86,7 +88,9 @@ library.add(
   faThermometerFull,
   faTimes,
   faTrash,
-  faUser
+  faUser,
+  faClipboardList,
+  faClock
 );
 
 export default FontAwesomeIcon;

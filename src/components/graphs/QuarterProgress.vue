@@ -1,7 +1,7 @@
 <template>
   <div class="p-6 mb-8 bg-white shadow rounded">
     <div class="flex mb-3 items-center justify-between">
-      <h3 class="text-gray-500">{{ title }}</h3>
+      <h3 class="text-gray-500" v-html="title"></h3>
     </div>
     <div class="flex items-center mb-3">
       <span class="text-4xl font-bold">{{ value }}</span>
@@ -12,7 +12,7 @@
         >{{ change }}</span
       >
     </div>
-    <div class="relative w-full h-1 mb-2 bg-gray-50 rounded">
+    <div class="relative w-full h-1 mb-2 bg-gray-200 rounded">
       <div
         class="absolute top-0 left-0 h-full bg-green-main rounded"
         :style="`width: ${progress}%`"
