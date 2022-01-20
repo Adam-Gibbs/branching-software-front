@@ -94,7 +94,7 @@
               icon="sign-out"
               background="red"
               path="/signin"
-              @toggleOpen="toggleOpen($event)"
+              @toggleOpen="signOut()"
             />
           </ul>
         </div>
@@ -104,6 +104,7 @@
 </template>
 
 <script lang="ts">
+import router from "@/router";
 import { defineComponent } from "vue";
 import Link from "./nav_components/Link.vue";
 import BurgerButton from "./nav_components/BurgerButton.vue";
@@ -118,6 +119,12 @@ export default defineComponent({
   methods: {
     toggleOpen: function (newValue: boolean) {
       this.open = newValue;
+    },
+    signOut: function () {
+      localStorage.removeItem("accessToken");
+      router.push({
+        name: "Sign In",
+      });
     },
   },
 });

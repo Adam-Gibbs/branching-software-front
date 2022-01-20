@@ -148,7 +148,13 @@ export default defineComponent({
         this.addWarning("A last name is required");
       }
       if (this.warningList.length === 0) {
-        router.push("overview");
+        localStorage.setItem(
+          "accessToken",
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZmJlYzg0ZjhjMjE2YzhhY"
+        );
+        router.push({
+          name: "Overview",
+        });
       }
     },
     validateEmail() {

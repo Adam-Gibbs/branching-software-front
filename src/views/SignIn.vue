@@ -110,7 +110,17 @@ export default defineComponent({
         this.addWarning("Password is required");
       }
       if (this.warningList.length === 0) {
-        router.push("overview");
+        localStorage.setItem(
+          "accessToken",
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZmJlYzg0ZjhjMjE2YzhhY"
+        );
+        if (this.$route.query.go) {
+          router.push({ name: this.$route.query.go });
+        } else {
+          router.push({
+            name: "Overview",
+          });
+        }
       }
     },
     addWarning(text) {
