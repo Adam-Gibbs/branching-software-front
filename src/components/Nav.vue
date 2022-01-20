@@ -27,7 +27,7 @@
           <Link
             title="Overview"
             icon="infinity"
-            path="/"
+            path="/overview"
             @toggleOpen="toggleOpen($event)"
           />
           <Link
