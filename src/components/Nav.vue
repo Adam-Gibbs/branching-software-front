@@ -50,7 +50,7 @@
           />
         </ul>
         <h3 class="mb-2 text-xs uppercase text-gray-400 font-medium">Assets</h3>
-        <ul class="text-sm font-medium">
+        <ul class="text-sm font-medium mb-8">
           <Link
             title="Upcoming Assets"
             icon="exchange-alt"
@@ -70,7 +70,18 @@
             @toggleOpen="toggleOpen($event)"
           />
         </ul>
-        <div class="pt-8">
+        <h3 class="mb-2 text-xs uppercase text-gray-400 font-medium">
+          Projects
+        </h3>
+        <ul class="text-sm font-medium mb-8">
+          <Link
+            title="All Projects"
+            icon="file-invoice"
+            path="/projects"
+            @toggleOpen="toggleOpen($event)"
+          />
+        </ul>
+        <div>
           <ul>
             <Link
               title="Settings"
