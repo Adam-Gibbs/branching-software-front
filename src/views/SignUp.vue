@@ -24,6 +24,7 @@
                     class="w-full py-4 text-sm placeholder-gray-400 font-semibold leading-none outline-none"
                     type="text"
                     v-model="firstName"
+                    ref="firstName"
                     placeholder="First name"
                   />
                   <font-awesome-icon
@@ -121,6 +122,11 @@ export default defineComponent({
       lastName: "",
       warningList: [],
     };
+  },
+  mounted() {
+    this.$nextTick(function () {
+      this.$refs.firstName.focus();
+    });
   },
   methods: {
     signUp() {

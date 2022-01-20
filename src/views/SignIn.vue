@@ -21,6 +21,7 @@
               <input
                 class="w-full py-4 text-sm placeholder-gray-400 font-semibold leading-none outline-none"
                 type="email"
+                ref="email"
                 v-model="email"
                 placeholder="Email"
               />
@@ -93,6 +94,11 @@ export default defineComponent({
       password: "",
       warningList: [],
     };
+  },
+  mounted() {
+    this.$nextTick(function () {
+      this.$refs.email.focus();
+    });
   },
   methods: {
     signIn() {
