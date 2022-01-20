@@ -110,7 +110,7 @@ export default defineComponent({
         this.addWarning("Password is required");
       }
       if (this.warningList.length === 0) {
-        router.push("Overview");
+        router.push("overview");
       }
     },
     addWarning(text) {
