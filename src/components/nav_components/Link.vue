@@ -67,7 +67,7 @@ export default defineComponent({
   methods: {
     currentRoute: function () {
       // return true if current path equals path
-      return this.$route.path === this.path;
+      return this.$route.path.includes(this.path);
     },
     toggleOpen: function () {
       this.$emit("toggleOpen", true);

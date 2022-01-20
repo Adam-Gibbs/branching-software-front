@@ -2,7 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
+    path: "/overview",
     name: "Overview",
     component: () => import("../views/Overview.vue"),
   },
@@ -42,6 +42,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/Assets.vue"),
   },
   {
+    path: "/assets/proposals/:assetId",
+    name: "View Proposals",
+    component: () => import("../views/Proposals.vue"),
+  },
+  {
     path: "/add",
     name: "Add Asset",
     component: () => import("../views/AddAsset.vue"),
@@ -50,6 +55,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/projects",
     name: "All Projects",
     component: () => import("../views/Projects.vue"),
+  },
+  {
+    path: "/projects/edit/:projectId",
+    name: "Edit Projects",
+    component: () => import("../views/ProjectEdit.vue"),
   },
   {
     path: "/:catchAll(.*)",
