@@ -88,8 +88,8 @@ export default defineComponent({
     toggleFinished() {
       this.showFinished = !this.showFinished;
     },
-    goTo(name: string) {
-      this.$router.push(`/projects/proposals/${name}`);
+    goTo(id: string) {
+      this.$router.push(`/projects/proposals/${id}`);
     },
   },
   data: function () {
