@@ -1,5 +1,5 @@
 <template>
-  <section class="py-8 bg-body">
+  <section class="py-8">
     <div class="container px-4 mx-auto">
       <div class="flex flex-wrap -m-4">
         <div
