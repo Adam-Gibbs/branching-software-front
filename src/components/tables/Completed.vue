@@ -50,11 +50,11 @@
             class="block w-1/2 ml-10 py-3 text-center text-xs text-white font-bold leading-none bg-green-main hover:bg-green-highlight rounded"
             :href="`/assets/proposals/${asset.id}`"
           >
-            View Project
             <font-awesome-icon
               icon="sitemap"
               class="h-4 w-6 my-auto text-white"
             />
+            View Project
           </a>
         </td>
       </tr>
