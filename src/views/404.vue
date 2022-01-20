@@ -6,10 +6,7 @@
     <div class="flex h-full items-center">
       <div class="container mx-auto px-4">
         <div class="max-w-md mx-auto text-center">
-          <h2
-            class="mb-4 text-2xl text-bold text-white font-heading"
-            data-config-id="header"
-          >
+          <h2 class="mb-4 text-2xl text-bold text-white font-heading">
             Page not found
           </h2>
           <p class="mb-10 text-lg text-gray-100">
@@ -24,19 +21,13 @@
                 icon="long-arrow-alt-left"
                 class="mr-2 h-6 font-heading text-gray-700"
               />
-              <span class="text-sm font-heading" data-config-id="primary-action"
-                >Back to home</span
-              >
+              <span class="text-sm font-heading">Back to home</span>
             </a>
             <button
               class="inline-flex font-bold cursor-pointer items-center text-white hover:underline"
               @click="reloadPage"
             >
-              <span
-                class="mr-2 text-sm font-heading"
-                data-config-id="secondary-action"
-                >Try again</span
-              >
+              <span class="mr-2 text-sm font-heading">Try again</span>
               <font-awesome-icon
                 icon="long-arrow-alt-right"
                 class="h-6 my-auto text-yellow-300"

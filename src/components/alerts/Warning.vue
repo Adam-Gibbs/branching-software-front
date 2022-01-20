@@ -6,7 +6,7 @@
           icon="triangle-exclamation"
           class="inline-block mr-2 text-yellow-800"
         />
-        <h3 class="text-yellow-800 text-sm font-medium" data-config-id="header">
+        <h3 class="text-yellow-800 text-sm font-medium">
           {{ text }}
         </h3>
         <button class="ml-auto" @click="emitRemoveWarning">
