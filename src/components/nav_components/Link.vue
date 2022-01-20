@@ -4,8 +4,10 @@
       class="flex items-center pl-3 py-3 pr-2 rounded-2xl"
       :class="
         currentRoute()
-          ? `text-white bg-${background}-main`
-          : `hover:bg-${background}-light text-gray-500`
+          ? `text-white bg-green-main`
+          : background === 'red'
+          ? `hover:bg-red-light text-gray-500`
+          : `hover:bg-green-light text-gray-500`
       "
       :to="path"
       @click="toggleOpen()"
