@@ -11,7 +11,7 @@
             class="ml-auto inline-block py-2 px-3 border rounded text-xs text-gray-500"
           >
             <select class="pr-1 bg-white">
-              <option v-for="item in dropdown">{{ item }}</option>
+              <option v-for="item in dropdown" :key="item">{{ item }}</option>
             </select>
           </div>
         </div>
