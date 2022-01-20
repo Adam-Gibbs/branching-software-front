@@ -18,6 +18,7 @@
               v-for="project in backlog"
               :key="project"
               :project="project"
+              @click="goTo(project.id)"
             />
           </div>
           <add-button />
@@ -33,7 +34,12 @@
             :count="progress.length"
             @click="toggleProgress"
           />
-          <Card v-for="project in progress" :key="project" :project="project" />
+          <Card
+            v-for="project in progress"
+            :key="project"
+            :project="project"
+            @click="goTo(project.id)"
+          />
           <add-button />
         </div>
         <div
@@ -47,7 +53,12 @@
             :count="finished.length"
             @click="toggleFinished"
           />
-          <Card v-for="project in finished" :key="project" :project="project" />
+          <Card
+            v-for="project in finished"
+            :key="project"
+            :project="project"
+            @click="goTo(project.id)"
+          />
           <add-button />
         </div>
       </div>
@@ -57,9 +68,9 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Title from "@/components/projects/Title.vue";
-import Card from "@/components/projects/Card.vue";
-import AddButton from "@/components/projects/AddButton.vue";
+import Title from "@/components/projects/list/Title.vue";
+import Card from "@/components/projects/list/Card.vue";
+import AddButton from "@/components/projects/list/AddButton.vue";
 
 export default defineComponent({
   components: {
@@ -77,6 +88,9 @@ export default defineComponent({
     toggleFinished() {
       this.showFinished = !this.showFinished;
     },
+    goTo(name: string) {
+      this.$router.push(`/projects/proposals/${name}`);
+    },
   },
   data: function () {
     return {
@@ -86,6 +100,7 @@ export default defineComponent({
       backlog: [
         {
           name: "Project 4",
+          id: "4",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non commodo purus.",
           assetType: "Vehicle",
@@ -95,6 +110,7 @@ export default defineComponent({
         },
         {
           name: "Project 5",
+          id: "5",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non commodo purus.",
           assetType: "CHP",
@@ -104,6 +120,7 @@ export default defineComponent({
         },
         {
           name: "Project 6",
+          id: "6",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non commodo purus.",
           assetType: "Powerplant",
@@ -115,6 +132,7 @@ export default defineComponent({
       progress: [
         {
           name: "Project 2",
+          id: "2",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non commodo purus.",
           assetType: "Powerplant",
@@ -124,6 +142,7 @@ export default defineComponent({
         },
         {
           name: "Project 3",
+          id: "3",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non commodo purus.",
           assetType: "Transport",
@@ -135,6 +154,7 @@ export default defineComponent({
       finished: [
         {
           name: "Project 1",
+          id: "1",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non commodo purus.",
           assetType: "Vehicle",

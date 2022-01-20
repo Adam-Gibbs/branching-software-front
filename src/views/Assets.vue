@@ -37,6 +37,7 @@
               :assetList="[
                 {
                   name: 'my Name',
+                  id: '3',
                   description: 'a desc',
                   location: 'Here',
                   co2: '200',

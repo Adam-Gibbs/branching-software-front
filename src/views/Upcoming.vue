@@ -56,6 +56,7 @@
               :assetList="[
                 {
                   name: 'my Name',
+                  id: '1',
                   description: 'a desc',
                   location: 'Here',
                   co2: '200',
@@ -69,6 +70,7 @@
               :assetList="[
                 {
                   name: 'my Name',
+                  id: '2',
                   description: 'a desc',
                   location: 'Here',
                   co2: '200',

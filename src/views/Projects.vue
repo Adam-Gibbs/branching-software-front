@@ -15,7 +15,7 @@
 import { defineComponent } from "vue";
 import Header from "@/components/Header.vue";
 import Nav from "@/components/Nav.vue";
-import CardHolder from "@/components/projects/CardHolder.vue";
+import CardHolder from "@/components/projects/list/CardHolder.vue";
 
 export default defineComponent({
   components: {
