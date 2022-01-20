@@ -2,6 +2,7 @@
   <section class="py-8 px-6">
     <div class="flex flex-wrap -mx-3 items-center">
       <div class="w-full lg:w-1/2 flex items-center mb-5 lg:mb-0 px-3">
+        <!-- Todo: not square on size change -->
         <span
           class="inline-flex justify-center items-center w-16 h-16 mr-4 bg-green-main rounded-2xl text-white"
         >
