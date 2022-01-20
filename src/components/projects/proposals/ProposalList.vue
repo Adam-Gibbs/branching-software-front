@@ -4,7 +4,7 @@
       <div class="flex flex-wrap items-center mb-3">
         <div>
           <div class="flex items-center">
-            <h3 class="mr-2 text-xl font-bold">Projects In Progress</h3>
+            <h3 class="mr-2 text-xl font-bold">Proposals</h3>
             <span
               class="py-1 px-2 bg-green-main text-xs text-white rounded-full"
               >{{ proposals.length }} New</span
@@ -19,6 +19,7 @@
         v-for="proposal in proposals"
         :key="proposal"
         :proposal="proposal"
+        @click="goTo(proposal.id)"
       />
     </div>
   </div>
@@ -32,12 +33,18 @@ export default defineComponent({
   components: {
     ProposalItem,
   },
+  methods: {
+    goTo(id: string) {
+      this.$router.push(`/projects/view/${id}`);
+    },
+  },
   data: function () {
     return {
       assetID: this.$route.params.assetID,
       proposals: [
         {
           name: "Project 1",
+          id: "1",
           issuer: "Issuer 1",
           emissions: "90",
           months: "12",
@@ -45,6 +52,7 @@ export default defineComponent({
         },
         {
           name: "Project 2",
+          id: "2",
           issuer: "Issuer 2",
           emissions: "80",
           months: "24",
@@ -52,6 +60,7 @@ export default defineComponent({
         },
         {
           name: "Project 3",
+          id: "3",
           issuer: "Issuer 3",
           emissions: "75",
           months: "36",

@@ -57,9 +57,9 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/Projects.vue"),
   },
   {
-    path: "/projects/edit/:projectId",
-    name: "Edit Projects",
-    component: () => import("../views/ProjectEdit.vue"),
+    path: "/projects/view/:projectId",
+    name: "View Projects",
+    component: () => import("../views/ProjectView.vue"),
   },
   {
     path: "/:catchAll(.*)",

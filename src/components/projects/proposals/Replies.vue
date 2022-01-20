@@ -2,9 +2,9 @@
   <div class="w-full md:w-1/3 px-4 mb-6 lg:mb-0">
     <div class="relative px-6 pb-6 py-4 bg-white shadow rounded">
       <div class="mb-6">
-        <h3 class="text-xl font-bold">Messages about Project</h3>
+        <h3 class="text-xl font-bold">Messages</h3>
         <p class="text-sm text-gray-500">
-          All recent messages about the current project.
+          All recent messages about related proposals.
         </p>
       </div>
       <div class="relative">
