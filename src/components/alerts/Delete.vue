@@ -25,14 +25,14 @@
               Are you sure you would like to delete {{ name }}
             </h3>
             <button
-              class="ml-auto inline-block w-full md:w-auto px-3 py-1 font-small text-white bg-red-800 hover:bg-red-700 rounded transition duration-200"
+              class="ml-auto inline-block w-full md:w-auto px-3 py-1 font-small text-white bg-red-800 hover:bg-red-700 rounded transition"
               :href="deleteLink"
               @click="emitRemoveDelete()"
             >
               Confirm Delete
             </button>
             <button
-              class="ml-2 inline-block w-full md:w-auto px-3 py-1 font-small text-white bg-red-500 hover:bg-red-700 rounded transition duration-200"
+              class="ml-2 inline-block w-full md:w-auto px-3 py-1 font-small text-white bg-red-500 hover:bg-red-700 rounded transition"
               @click="emitRemoveDelete()"
             >
               Cancel
