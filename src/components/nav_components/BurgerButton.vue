@@ -6,7 +6,7 @@
       alt="Icon for Branching Software"
     />
     <button
-      class="text-gray-500 w-10 h-10 relative focus:outline-none bg-white navbar-burger rounded"
+      class="text-gray-500 w-10 h-10 relative focus:outline-none bg-white shadow navbar-burger rounded"
       @click="toggleOpen()"
     >
       <span class="sr-only">Open main menu</span>

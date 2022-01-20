@@ -1,6 +1,6 @@
 <template>
   <div class="w-full lg:w-1/2 p-4">
-    <div class="bg-white rounded">
+    <div class="bg-white shadow rounded">
       <div class="flex items-center py-5 px-6 border-b">
         <h3 class="text-2xl font-bold" data-config-id="header1">{{ title }}</h3>
         <div

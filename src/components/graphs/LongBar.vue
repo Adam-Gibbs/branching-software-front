@@ -1,7 +1,7 @@
 <template>
   <section class="py-8">
     <div class="container px-4 mx-auto">
-      <div class="bg-white rounded">
+      <div class="bg-white shadow rounded">
         <div class="flex flex-wrap items-center py-5 px-6">
           <h3
             class="w-full md:w-auto mb-4 md:mb-0 text-2xl font-bold"
