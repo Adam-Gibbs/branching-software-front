@@ -98,7 +98,7 @@ export default defineComponent({
       email: "",
       password: "",
       warningList: [],
-      loading: true,
+      loading: false,
     };
   },
   mounted() {
@@ -120,7 +120,7 @@ export default defineComponent({
       }
     },
     signPass(response) {
-      localStorage.setItem("userId", response.id);
+      localStorage.setItem("userId", response.result.id);
       if (this.$route.query.go) {
         router.push({ name: this.$route.query.go });
       } else {
@@ -131,6 +131,7 @@ export default defineComponent({
     },
     sendRequest() {
       this.loading = true;
+      console.log(process.env.VUE_APP_APIURL + "/v1/signin");
       const requestOptions = {
         method: "POST",
         body: JSON.stringify({
@@ -152,7 +153,8 @@ export default defineComponent({
           this.loading = false;
           this.signPass(data);
         })
-        .catch(() => {
+        .catch((e) => {
+          console.log(e);
           this.addWarning("An error occurred, please retry.");
           this.loading = false;
         });

@@ -158,7 +158,7 @@ export default defineComponent({
       }
     },
     signPass(response) {
-      localStorage.setItem("userId", response.id);
+      localStorage.setItem("userId", response.result.id);
       router.push({
         name: "Overview",
       });
