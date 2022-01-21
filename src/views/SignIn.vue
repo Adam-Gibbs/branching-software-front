@@ -131,7 +131,6 @@ export default defineComponent({
     },
     sendRequest() {
       this.loading = true;
-      console.log(process.env.VUE_APP_APIURL + "/v1/signin");
       const requestOptions = {
         method: "POST",
         body: JSON.stringify({
@@ -153,8 +152,7 @@ export default defineComponent({
           this.loading = false;
           this.signPass(data);
         })
-        .catch((e) => {
-          console.log(e);
+        .catch(() => {
           this.addWarning("An error occurred, please retry.");
           this.loading = false;
         });
