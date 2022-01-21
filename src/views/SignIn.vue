@@ -93,6 +93,7 @@ export default defineComponent({
       email: "",
       password: "",
       warningList: [],
+      loading: false,
     };
   },
   mounted() {
@@ -110,18 +111,49 @@ export default defineComponent({
         this.addWarning("Password is required");
       }
       if (this.warningList.length === 0) {
-        localStorage.setItem(
-          "userId",
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZmJlYzg0ZjhjMjE2YzhhY"
-        );
-        if (this.$route.query.go) {
-          router.push({ name: this.$route.query.go });
-        } else {
-          router.push({
-            name: "Overview",
-          });
-        }
+        this.sendRequest();
       }
+    },
+    signPass(response) {
+      localStorage.setItem("userId", response.id);
+      if (this.$route.query.go) {
+        router.push({ name: this.$route.query.go });
+      } else {
+        router.push({
+          name: "Overview",
+        });
+      }
+    },
+    sendRequest() {
+      this.loading = true;
+      const requestOptions = {
+        method: "POST",
+        body: JSON.stringify({
+          email: this.email,
+          password: this.password,
+        }),
+      };
+      fetch(
+        "https://dt6hs018wd.execute-api.eu-west-2.amazonaws.com/dev/v1/signin",
+        requestOptions
+      )
+        .then(async (response) => {
+          const data = await response.json();
+
+          // check for error response
+          if (await !response.ok) {
+            this.addWarning(data.message);
+            this.loading = false;
+            return;
+          }
+
+          this.loading = false;
+          this.signPass(data);
+        })
+        .catch(() => {
+          this.addWarning("An error occurred, please retry.");
+          this.loading = false;
+        });
     },
     addWarning(text) {
       if (!this.warningList.includes(text)) {

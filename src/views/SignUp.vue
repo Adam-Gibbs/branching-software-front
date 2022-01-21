@@ -175,7 +175,6 @@ export default defineComponent({
       )
         .then(async (response) => {
           const data = await response.json();
-          console.log(data);
 
           // check for error response
           if (await !response.ok) {
