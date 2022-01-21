@@ -42,8 +42,13 @@
           <p class="text-base">{{ asset.co2 }}kg</p>
         </td>
         <td class="font-medium">
-          <p class="text-base">{{ asset.eol }}</p>
-          <p class="text-sm text-gray-500">Added on: {{ asset.addedOn }}</p>
+          <p class="text-base">
+            {{ new Date(asset.eol).toLocaleDateString() }}
+          </p>
+          <p class="text-sm text-gray-500">
+            Added on:
+            {{ new Date(asset.createdAt).toLocaleDateString() }}
+          </p>
         </td>
         <td class="font-medium items-center">
           <a
@@ -60,8 +65,17 @@
       </tr>
     </tbody>
   </table>
-  <div class="py-4 text-center" v-show="assetList.length === 0">
-    <a class="inline-flex items-center text-green-main font-medium" href="/add">
+  <div class="py-4 text-center" v-show="assetList.length === 0 || loading">
+    <font-awesome-icon
+      icon="fan"
+      class="text-green-main h-16 w-16 animate-spin"
+      v-show="loading"
+    />
+    <a
+      class="inline-flex items-center text-green-main hover:underline text-sm font-medium"
+      href="/add"
+      v-show="!loading"
+    >
       <font-awesome-icon icon="thermometer-full" class="w-5 h-5 mr-1" />
       <span
         >It seems you have not yet added any assets, click here to get
@@ -83,6 +97,10 @@ export default defineComponent({
     assetList: {
       type: Array,
       default: () => [],
+    },
+    loading: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {
