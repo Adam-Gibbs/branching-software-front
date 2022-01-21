@@ -78,7 +78,12 @@
               class="block w-full p-4 text-center text-xs text-white font-semibold leading-none bg-green-main hover:bg-green-highlight rounded"
               @click.prevent="signUp"
             >
-              Sign Up
+              <p v-show="!loading">Sign Up</p>
+              <font-awesome-icon
+                icon="fan"
+                class="h-4 w-4 animate-spin"
+                v-show="loading"
+              />
             </button>
           </form>
           <div class="block mt-3">

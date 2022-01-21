@@ -44,6 +44,7 @@ import {
   faUser,
   faClipboardList,
   faClock,
+  faFan,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -90,7 +91,8 @@ library.add(
   faTrash,
   faUser,
   faClipboardList,
-  faClock
+  faClock,
+  faFan
 );
 
 export default FontAwesomeIcon;
