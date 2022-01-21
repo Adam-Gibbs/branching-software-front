@@ -43,10 +43,15 @@
               />
             </div>
             <button
-              class="block w-full p-4 text-center text-xs text-white font-semibold leading-none bg-green-main hover:bg-green-highlight rounded"
+              class="w-full p-3 text-center flex justify-center items-center text-white font-semibold leading-none bg-green-main hover:bg-green-highlight rounded"
               @click.prevent="signIn"
             >
-              Sign In
+              <p v-show="!loading">Sign In</p>
+              <font-awesome-icon
+                icon="fan"
+                class="h-4 w-4 animate-spin"
+                v-show="loading"
+              />
             </button>
           </form>
           <div class="block mt-3">
@@ -93,7 +98,7 @@ export default defineComponent({
       email: "",
       password: "",
       warningList: [],
-      loading: false,
+      loading: true,
     };
   },
   mounted() {
