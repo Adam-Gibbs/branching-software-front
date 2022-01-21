@@ -6,7 +6,7 @@
       {{ title }}
     </label>
     <select
-      class="appearance-none w-full block px-4 py-3 mb-2 text-sm bg-gray-200 text-gray-700 border focus:outline-none focus:bg-white focus:border-gray-500 rounded"
+      class="w-full block px-4 py-3 mb-2 text-sm bg-gray-200 text-gray-700 border focus:outline-none focus:bg-white focus:border-gray-500 rounded"
       v-model="item"
       @blur="checkEmpty"
       :class="alert ? 'border-red-500' : 'border-gray-200'"
@@ -23,7 +23,7 @@
   <div class="w-full md:w-1/6">
     <button
       class="block self-start ml-3 bg-green-main px-2 py-1 rounded hover:bg-green-highlight"
-      :class="{ 'mt-3': !alert }"
+      :class="{ 'mt-4': !alert }"
     >
       <font-awesome-icon icon="plus" class="h-4 w-4 text-gray-100" />
     </button>
