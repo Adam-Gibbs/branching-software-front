@@ -96,7 +96,7 @@ export default defineComponent({
           userId: localStorage.getItem("userId"),
         }),
       };
-      fetch(process.env.VUE_APP_APIURL + "/v1/asset/all", requestOptions)
+      fetch(process.env.VUE_APP_APIURL + "/v1/assets/all", requestOptions)
         .then(async (response) => {
           const data = await response.json();
 
