@@ -174,10 +174,7 @@ export default defineComponent({
           lastName: this.lastName,
         }),
       };
-      fetch(
-        "https://dt6hs018wd.execute-api.eu-west-2.amazonaws.com/dev/v1/signup",
-        requestOptions
-      )
+      fetch(process.env.VUE_APP_APIURL + "/v1/signup", requestOptions)
         .then(async (response) => {
           const data = await response.json();
 
