@@ -121,6 +121,7 @@ export default defineComponent({
       firstName: "",
       lastName: "",
       warningList: [],
+      loading: false,
     };
   },
   mounted() {
@@ -129,7 +130,7 @@ export default defineComponent({
     });
   },
   methods: {
-    signUp() {
+    async signUp() {
       this.warningList = [];
       if (this.email === "") {
         this.addWarning("Email is required");
@@ -148,14 +149,48 @@ export default defineComponent({
         this.addWarning("A last name is required");
       }
       if (this.warningList.length === 0) {
-        localStorage.setItem(
-          "accessToken",
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZmJlYzg0ZjhjMjE2YzhhY"
-        );
-        router.push({
-          name: "Overview",
-        });
+        this.sendRequest();
       }
+    },
+    signPass(response) {
+      localStorage.setItem("userId", response.id);
+      router.push({
+        name: "Overview",
+      });
+    },
+    sendRequest() {
+      this.loading = true;
+      const requestOptions = {
+        method: "POST",
+        body: JSON.stringify({
+          email: this.email,
+          password: this.password,
+          firstName: this.firstName,
+          lastName: this.lastName,
+        }),
+      };
+      fetch(
+        "https://dt6hs018wd.execute-api.eu-west-2.amazonaws.com/dev/v1/signup",
+        requestOptions
+      )
+        .then(async (response) => {
+          const data = await response.json();
+          console.log(data);
+
+          // check for error response
+          if (await !response.ok) {
+            this.addWarning(data.message);
+            this.loading = false;
+            return;
+          }
+
+          this.loading = false;
+          this.signPass(data);
+        })
+        .catch(() => {
+          this.addWarning("An error occurred, please retry.");
+          this.loading = false;
+        });
     },
     validateEmail() {
       // from https://stackoverflow.com/a/62825465

@@ -121,7 +121,7 @@ export default defineComponent({
       this.open = newValue;
     },
     signOut: function () {
-      localStorage.removeItem("accessToken");
+      localStorage.removeItem("userId");
       router.push({
         name: "Sign In",
       });

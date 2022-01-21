@@ -111,7 +111,7 @@ export default defineComponent({
       }
       if (this.warningList.length === 0) {
         localStorage.setItem(
-          "accessToken",
+          "userId",
           "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZmJlYzg0ZjhjMjE2YzhhY"
         );
         if (this.$route.query.go) {

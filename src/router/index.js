@@ -122,13 +122,13 @@ router.beforeEach((to, from, next) => {
   const go = to.name;
   if (
     (go === "Sign In" || go === "Sign Up") &&
-    localStorage.getItem("accessToken")
+    localStorage.getItem("userId")
   ) {
     router.push({
       name: "Overview",
     });
   } else if (to.meta.authRequired) {
-    if (!localStorage.getItem("accessToken")) {
+    if (!localStorage.getItem("userId")) {
       //user not logged in, send them to login page
       router.push({
         name: "Sign In",
