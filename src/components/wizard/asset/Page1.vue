@@ -20,13 +20,15 @@
     <div class="w-full flex md:w-1/2 px-3 mb-6 md:mb-0 items-center">
       <add-dropdown
         title="Asset Type"
-        :options="['A', 'B']"
+        link="/v1/asset-types/all"
         ref="type"
         :required="true"
         :value="values.type"
         :disable="disable"
         @empty="addEmpty('type')"
         @add-pressed="emitNewType"
+        @addWarning="addWarning($event)"
+        @removeWarning="removeWarning($event)"
       />
     </div>
   </div>
@@ -92,6 +94,12 @@ export default defineComponent({
     },
   },
   methods: {
+    addWarning(text) {
+      this.$emit("addWarning", text);
+    },
+    removeWarning(text) {
+      this.$emit("removeWarning", text);
+    },
     addEmpty(key) {
       if (!this.emptyFields.includes(key)) {
         this.emptyFields.push(key);

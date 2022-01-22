@@ -6,7 +6,7 @@
       {{ title }}
     </label>
     <select
-      :disabled="disable"
+      :disabled="disableToggle"
       class="w-full block px-4 py-3 mb-2 text-sm bg-gray-200 text-gray-700 border focus:outline-none focus:bg-white focus:border-gray-500 rounded"
       v-model="item"
       @blur="checkEmpty"
@@ -24,7 +24,7 @@
   <div class="w-full md:w-1/6">
     <button
       class="block self-start ml-3 bg-green-main px-2 py-1 rounded"
-      :class="{ 'mt-4': !alert, 'hover:bg-green-highlight': !disable }"
+      :class="{ 'mt-4': !alert, 'hover:bg-green-highlight': !disableToggle }"
       @click="emitAddPressed"
     >
       <font-awesome-icon icon="plus" class="h-4 w-4 text-gray-100" />
@@ -37,11 +37,11 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   props: {
-    options: {
-      type: Array,
+    title: {
+      type: String,
       required: true,
     },
-    title: {
+    link: {
       type: String,
       required: true,
     },
@@ -58,7 +58,32 @@ export default defineComponent({
       default: false,
     },
   },
+  watch: {
+    disable: {
+      immediate: true,
+      handler(newVal) {
+        this.disableToggle = newVal;
+        if (newVal === false) {
+          this.reLoad();
+        }
+      },
+    },
+  },
+  mounted() {
+    this.$nextTick(function () {
+      this.sendRequest();
+    });
+  },
   methods: {
+    addWarning(text: string) {
+      this.$emit("addWarning", text);
+    },
+    removeWarning(text: string) {
+      this.$emit("removeWarning", text);
+    },
+    reLoad() {
+      this.sendRequest();
+    },
     checkEmpty() {
       if (this.required) {
         if (this.item === "") {
@@ -76,11 +101,38 @@ export default defineComponent({
     emitAddPressed() {
       this.$emit("add-pressed");
     },
+    sendRequest() {
+      this.disableToggle = true;
+      const requestOptions = {
+        method: "POST",
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+        }),
+      };
+      fetch(process.env.VUE_APP_APIURL + this.link, requestOptions)
+        .then(async (response) => {
+          const data = await response.json();
+
+          // check for error response
+          if (await !response.ok) {
+            this.addWarning(data.message);
+            return;
+          }
+
+          this.disableToggle = false;
+          this.options = data.result;
+        })
+        .catch(() => {
+          this.addWarning("An error occurred, please retry");
+        });
+    },
   },
   data() {
     return {
       item: this.value,
       alert: false,
+      disableToggle: this.disable,
+      options: Array<string>(),
     };
   },
 });

@@ -9,13 +9,15 @@
     <div class="w-full flex md:w-1/2 px-3 mb-6 md:mb-0 items-center">
       <add-dropdown
         title="Asset Location"
-        :options="['A', 'B']"
+        link="/v1/locations/all"
         ref="location"
         :required="true"
         :value="values.location"
         :disable="disable"
         @empty="addEmpty('location')"
         @add-pressed="emitNewLocation"
+        @addWarning="addWarning($event)"
+        @removeWarning="removeWarning($event)"
       />
     </div>
     <div class="w-full flex md:w-1/2 px-3 mb-6 md:mb-0 items-center">
@@ -66,6 +68,12 @@ export default defineComponent({
     },
   },
   methods: {
+    addWarning(text) {
+      this.$emit("addWarning", text);
+    },
+    removeWarning(text) {
+      this.$emit("removeWarning", text);
+    },
     addEmpty(key) {
       if (!this.emptyFields.includes(key)) {
         this.emptyFields.push(key);

@@ -17,6 +17,8 @@
           @next="getPage1('n')"
           @previous="getPage1('p')"
           @new-type="showNewType"
+          @addWarning="addWarning($event)"
+          @removeWarning="removeWarning($event)"
         />
         <page-2
           v-if="page === 2"
@@ -26,6 +28,8 @@
           @next="getPage2('n')"
           @previous="getPage2('p')"
           @new-location="showNewLocation"
+          @addWarning="addWarning($event)"
+          @removeWarning="removeWarning($event)"
         />
         <page-3
           v-if="page === 3"
