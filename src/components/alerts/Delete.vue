@@ -71,7 +71,7 @@ export default defineComponent({
           id: this.deleteLink.id,
         }),
       };
-      fetch(process.env.VUE_APP_APIURL + "/v1/signin", requestOptions)
+      fetch(process.env.VUE_APP_APIURL + this.deleteLink.link, requestOptions)
         .then(async (response) => {
           const data = await response.json();
 
