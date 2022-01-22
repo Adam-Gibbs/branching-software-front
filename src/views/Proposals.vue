@@ -31,10 +31,10 @@
           <div class="w-full md:w-1/3 px-4 mb-6 lg:mb-0">
             <quarter-progress
               :loading="asset.id === undefined"
-              :progress="dateProgressValue()"
+              :progress="dateProgressValue(asset)"
               title="Date of expected end of life"
               :value="new Date(asset.eol).toLocaleDateString()"
-              :subtitle="findLargestUntil()"
+              :subtitle="findLargestUntil(asset.eol)"
             />
           </div>
         </div>
@@ -119,9 +119,9 @@ export default defineComponent({
           this.loading = false;
         });
     },
-    dateProgressValue() {
-      const mid = Date.now() - this.asset.createdAt;
-      const end = this.asset.eol - this.asset.createdAt;
+    dateProgressValue(asset) {
+      const mid = Date.now() - asset.createdAt;
+      const end = asset.eol - asset.createdAt;
       const percent = mid / end;
       if (percent > 1) {
         return 100;
@@ -129,8 +129,8 @@ export default defineComponent({
         return percent * 100;
       }
     },
-    findLargestUntil() {
-      let diff = this.asset.eol - Date.now();
+    findLargestUntil(eol) {
+      let diff = eol - Date.now();
       let afterText = "until EOL";
       if (diff < 0) {
         diff = -diff;
