@@ -6,7 +6,7 @@
     :key="item"
     @removeWarning="removeWarning($event)"
   />
-  <section class="py-8">
+  <section class="pb-8">
     <div class="container px-4 mx-auto">
       <div class="p-6 bg-white shadow rounded">
         <page-1

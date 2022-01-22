@@ -14,7 +14,7 @@
       :key="item"
       @removeWarning="removeWarning($event)"
     />
-    <section class="pt-8">
+    <section class="pb-8">
       <div class="container px-4 mx-auto">
         <div class="flex flex-wrap -mx-4">
           <Title :loading="asset.id === undefined" :asset="asset" />
@@ -40,7 +40,7 @@
         </div>
       </div>
     </section>
-    <section class="py-8">
+    <section class="pb-8">
       <div class="container px-4 mx-auto">
         <div class="flex flex-wrap -mx-4">
           <Replies />

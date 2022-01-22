@@ -6,7 +6,7 @@
     :key="item"
     @removeWarning="removeWarning($event)"
   />
-  <section class="py-8" :class="{ 'blur-sm': disable }">
+  <section class="pb-8" :class="{ 'blur-sm': disable }">
     <div class="container px-4 mx-auto">
       <div class="p-6 bg-white shadow rounded">
         <page-1

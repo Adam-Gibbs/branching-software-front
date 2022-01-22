@@ -12,7 +12,7 @@
     @removeDelete="removeDelete($event)"
     @addWarning="addWarning($event)"
   />
-  <section class="py-8">
+  <section class="pb-8">
     <div class="container px-4 mx-auto">
       <add-button class="mb-4" title="Add New Goals" link="/goals/add" />
       <div class="flex flex-wrap -m-4">

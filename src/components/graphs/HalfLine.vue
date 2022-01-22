@@ -48,12 +48,7 @@
           </div>
         </div>
       </div>
-      <apexchart
-        height="180"
-        type="area"
-        :options="options"
-        :series="series"
-      ></apexchart>
+      <apexchart height="180" type="area" :options="options" :series="series" />
     </div>
   </div>
 </template>
@@ -129,15 +124,6 @@ export default defineComponent({
         stroke: {
           curve: "straight",
           width: 2,
-        },
-        __variants: {
-          "dark-bg": {
-            colors: ["#8880EB"],
-            fill: {
-              type: ["solid"],
-              colors: ["#6056E4"],
-            },
-          },
         },
       },
       series: [

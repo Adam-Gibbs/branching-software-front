@@ -12,12 +12,7 @@
         >{{ change }}</span
       >
     </div>
-    <apexchart
-      height="100"
-      :options="options"
-      :series="series"
-      type="bar"
-    ></apexchart>
+    <apexchart height="100" :options="options" :series="series" type="bar" />
   </div>
 </template>
 
@@ -28,10 +23,6 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      required: true,
-    },
-    yaxisData: {
-      type: Array,
       required: true,
     },
     value: {

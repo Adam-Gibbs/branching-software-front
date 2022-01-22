@@ -1,11 +1,12 @@
 <template>
-  <section class="py-8">
+  <section class="pb-8">
     <div class="container px-4 mx-auto">
       <div class="bg-white shadow rounded">
         <div class="flex flex-wrap items-center py-5 px-6">
-          <h3 class="w-full md:w-auto mb-4 md:mb-0 text-2xl font-bold">
-            {{ title }}
-          </h3>
+          <h3
+            class="w-full md:w-auto mb-4 md:mb-0 text-2xl font-bold"
+            v-html="title"
+          />
           <div
             v-if="dropdown.length > 0"
             class="ml-auto inline-block py-2 px-3 border rounded text-xs text-gray-500"
@@ -69,7 +70,7 @@ export default defineComponent({
         },
         colors: ["#30A51B"],
         xaxis: {
-          type: "integer",
+          type: "datetime",
           categories: this.xaxisData,
           labels: {
             show: true,

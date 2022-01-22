@@ -15,7 +15,7 @@
       @removeWarning="removeWarning($event)"
     />
     <GoalRows :goals="goals" v-if="!loading" />
-    <section class="py-8" v-if="loading">
+    <section class="pb-8" v-if="loading">
       <div class="container px-4 mx-auto">
         <font-awesome-icon
           icon="fan"
