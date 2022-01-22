@@ -7,13 +7,21 @@
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non
               commodo purus."
     />
+    <Warning
+      class="container px-4 mx-auto"
+      v-for="item in warningList"
+      :text="item"
+      :key="item"
+      @removeWarning="removeWarning($event)"
+    />
     <section class="pt-8">
       <div class="container px-4 mx-auto">
         <div class="flex flex-wrap -mx-4">
-          <Title :asset="asset" />
+          <Title :loading="asset.id === undefined" :asset="asset" />
           <div class="w-full md:w-1/3 px-4 mb-6 lg:mb-0">
             <!-- TODO get location totals -->
             <quarter-progress
+              :loading="asset.id === undefined"
               :progress="'20'"
               title="CO<sup>2</sup>e produced per year"
               :value="`${asset.co2}kg`"
@@ -22,6 +30,7 @@
           </div>
           <div class="w-full md:w-1/3 px-4 mb-6 lg:mb-0">
             <quarter-progress
+              :loading="asset.id === undefined"
               :progress="dateProgressValue()"
               title="Date of expected end of life"
               :value="new Date(asset.eol).toLocaleDateString()"
@@ -42,10 +51,11 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from "vue";
 import Header from "@/components/Header.vue";
 import Nav from "@/components/Nav.vue";
+import Warning from "@/components/alerts/Warning.vue";
 import Title from "@/components/projects/proposals/Title.vue";
 import QuarterProgress from "@/components/graphs/QuarterProgress.vue";
 import Replies from "@/components/projects/proposals/Replies.vue";
@@ -55,6 +65,7 @@ export default defineComponent({
   components: {
     Nav,
     Header,
+    Warning,
     Title,
     QuarterProgress,
     Replies,
@@ -62,22 +73,53 @@ export default defineComponent({
   },
   data: function () {
     return {
-      assetID: this.$route.params.assetID,
-      projectID: this.$route.params.projectId,
-      asset: {
-        name: "Asset 1",
-        id: "1",
-        location: "London",
-        description: "This is a description of the asset",
-        eol: Date.now() + 900000000,
-        createdAt: Date.now() - 40000000,
-        co2: 250,
-      },
+      warningList: [],
+      loading: true,
+      asset: {},
     };
   },
+  mounted() {
+    this.$nextTick(function () {
+      this.sendRequest();
+    });
+  },
   methods: {
+    addWarning(text) {
+      if (!this.warningList.includes(text)) {
+        this.warningList.push(text);
+      }
+    },
+    removeWarning(text) {
+      this.warningList.splice(this.warningList.indexOf(text), 1);
+    },
+    sendRequest() {
+      const requestOptions = {
+        method: "POST",
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          assetId: this.$route.params.assetId,
+        }),
+      };
+      fetch(process.env.VUE_APP_APIURL + "/v1/assets/get", requestOptions)
+        .then(async (response) => {
+          const data = await response.json();
+
+          // check for error response
+          if (await !response.ok) {
+            this.addWarning(data.message);
+            this.loading = false;
+            return;
+          }
+
+          this.loading = false;
+          this.asset = data.result;
+        })
+        .catch(() => {
+          this.addWarning("An error occurred, please retry.");
+          this.loading = false;
+        });
+    },
     dateProgressValue() {
-      console.log(Date.now());
       const mid = Date.now() - this.asset.createdAt;
       const end = this.asset.eol - this.asset.createdAt;
       const percent = mid / end;
