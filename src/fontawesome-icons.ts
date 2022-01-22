@@ -1,6 +1,8 @@
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
+  faAngleDoubleDown,
+  faAngleDoubleUp,
   faArrowDown,
   faAt,
   faBullseye,
@@ -9,6 +11,8 @@ import {
   faCheck,
   faChevronLeft,
   faChevronRight,
+  faClipboardList,
+  faClock,
   faCloud,
   faCog,
   faComment,
@@ -17,6 +21,7 @@ import {
   faEdit,
   faExchangeAlt,
   faExclamationTriangle,
+  faFan,
   faFileDownload,
   faFileInvoice,
   faHistory,
@@ -24,6 +29,7 @@ import {
   faKey,
   faLongArrowAltLeft,
   faLongArrowAltRight,
+  faMapMarkerAlt,
   faMedal,
   faMousePointer,
   faPaperPlane,
@@ -42,14 +48,12 @@ import {
   faTimes,
   faTrash,
   faUser,
-  faClipboardList,
-  faClock,
-  faFan,
-  faMapMarkerAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 library.add(
+  faAngleDoubleDown,
+  faAngleDoubleUp,
   faArrowDown,
   faAt,
   faBullseye,
@@ -58,6 +62,8 @@ library.add(
   faCheck,
   faChevronLeft,
   faChevronRight,
+  faClipboardList,
+  faClock,
   faCloud,
   faCog,
   faComment,
@@ -66,6 +72,7 @@ library.add(
   faEdit,
   faExchangeAlt,
   faExclamationTriangle,
+  faFan,
   faFileDownload,
   faFileInvoice,
   faHistory,
@@ -73,6 +80,7 @@ library.add(
   faKey,
   faLongArrowAltLeft,
   faLongArrowAltRight,
+  faMapMarkerAlt,
   faMedal,
   faMousePointer,
   faPaperPlane,
@@ -90,11 +98,7 @@ library.add(
   faThermometerFull,
   faTimes,
   faTrash,
-  faUser,
-  faClipboardList,
-  faClock,
-  faFan,
-  faMapMarkerAlt
+  faUser
 );
 
 export default FontAwesomeIcon;
