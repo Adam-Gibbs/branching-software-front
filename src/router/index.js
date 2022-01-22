@@ -55,6 +55,14 @@ const routes = [
     },
   },
   {
+    path: "/goals/add",
+    name: "Add Goals",
+    component: () => import("../views/AddGoal.vue"),
+    meta: {
+      authRequired: true,
+    },
+  },
+  {
     path: "/upcoming",
     name: "Upcoming",
     component: () => import("../views/Upcoming.vue"),

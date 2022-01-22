@@ -7,6 +7,7 @@
   />
   <section class="py-8">
     <div class="container px-4 mx-auto">
+      <add-button class="mb-4" title="Add New Goals" link="/goals/add" />
       <div class="flex flex-wrap -m-4">
         <div v-for="goal in goals" :key="goal" class="w-full lg:w-1/2 p-4">
           <goal-item
@@ -28,9 +29,10 @@
 import { defineComponent } from "vue";
 import GoalItem from "./GoalItem.vue";
 import Delete from "@/components/alerts/Delete.vue";
+import AddButton from "@/components/AddButton.vue";
 
 export default defineComponent({
-  components: { GoalItem, Delete },
+  components: { GoalItem, Delete, AddButton },
   props: {
     goals: {
       type: Array,
