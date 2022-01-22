@@ -1,14 +1,14 @@
 <template>
   <Progress value="100" />
   <Title
-    title="Add new Location"
-    description="Create a new location"
-    icon="map-marker-alt"
+    title="Add new Asset Type"
+    description="Create a new asset type"
+    icon="sitemap"
   />
   <div class="mb-6">
     <Text
-      title="Name of Location"
-      placeholder="14 Stuart Square"
+      title="Name of Type"
+      placeholder="Gas Boiler"
       ref="name"
       :value="values.name"
       :required="true"

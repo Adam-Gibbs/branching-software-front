@@ -7,7 +7,7 @@
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non
               commodo purus."
     />
-    <asset-type-wizard v-if="showType" />
+    <asset-type-wizard v-if="showType" @go-back="hideSubWizard" />
     <location-wizard v-if="showLocation" @go-back="hideSubWizard" />
     <asset-wizard
       ref="assetWizard"
