@@ -55,28 +55,35 @@
             </button>
           </form>
           <div class="block mt-3">
-            <a
+            <button
               class="m-3 text-xs text-green-main text-center"
-              href="/forgot-password"
+              @click="$router.push('/forgot-password')"
             >
               Forgot Password
-            </a>
-            <a class="m-3 text-xs text-green-main text-center" href="/signup">
+            </button>
+            <button
+              class="m-3 text-xs text-green-main text-center"
+              @click="$router.push('/signup')"
+            >
               No Account? Sign Up
-            </a>
+            </button>
           </div>
         </div>
         <div>
           <p class="text-xs text-white text-center">
-            <a
+            <button
               class="underline hover:text-green-highlight"
-              href="/privacy-policy"
-              >Privacy Policy</a
+              @click="$router.push('/privacy-policy')"
             >
+              Privacy Policy
+            </button>
             and
-            <a class="underline hover:text-green-highlight" href="/terms-of-use"
-              >Terms of Use</a
+            <button
+              class="underline hover:text-green-highlight"
+              @click="$router.push('/terms-of-use')"
             >
+              Terms of Use
+            </button>
           </p>
         </div>
       </div>

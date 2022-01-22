@@ -11,13 +11,16 @@
       <div
         class="flex w-full items-center px-6 pb-6 mb-6 lg:border-b border-blue-50"
       >
-        <a class="text-xl font-semibold" href="/">
+        <button
+          class="text-xl font-semibold"
+          @click="$router.push('/overview')"
+        >
           <img
             class="h-10"
             src="@/assets/icon.svg"
             alt="Icon for Branching Software"
           />
-        </a>
+        </button>
       </div>
       <div class="px-4 pb-6">
         <h3 class="mb-2 text-xs uppercase text-gray-400 font-medium">

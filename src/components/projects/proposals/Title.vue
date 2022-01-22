@@ -14,9 +14,9 @@
       </p>
       <p class="mb-6 text-xs" v-show="!loading">{{ asset.description }}</p>
       <a
-        class="flex items-center justify-center py-2 text-sm text-white bg-green-main hover:bg-green-highlight rounded transition"
+        class="flex items-center cursor-pointer justify-center py-2 text-sm text-white bg-green-main hover:bg-green-highlight rounded transition"
         v-show="!loading"
-        :href="`/add/existing/${asset.id}`"
+        @click="$router.push(`/add/existing/${asset.id}`)"
       >
         <font-awesome-icon icon="edit" class="mr-1 h-4 w-4" />
         <span>Edit</span>
