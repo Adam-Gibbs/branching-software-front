@@ -21,7 +21,7 @@
               @click="goTo(project.id)"
             />
           </div>
-          <add-button />
+          <add-button title="Add New Project" />
         </div>
         <div
           class="sm:w-full hide p-4"
@@ -40,7 +40,7 @@
             :project="project"
             @click="goTo(project.id)"
           />
-          <add-button />
+          <add-button title="Add New Project" />
         </div>
         <div
           class="sm:w-full p-4"
@@ -59,7 +59,7 @@
             :project="project"
             @click="goTo(project.id)"
           />
-          <add-button />
+          <add-button title="Add New Project" />
         </div>
       </div>
     </div>
@@ -70,7 +70,7 @@
 import { defineComponent } from "vue";
 import Title from "@/components/projects/list/Title.vue";
 import Card from "@/components/projects/list/Card.vue";
-import AddButton from "@/components/projects/list/AddButton.vue";
+import AddButton from "@/components/AddButton.vue";
 
 export default defineComponent({
   components: {

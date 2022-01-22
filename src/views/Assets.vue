@@ -28,13 +28,7 @@
             </div>
             <div>
               <a
-                class="inline-block cursor-pointer px-4 pb-2 text-sm font-medium border-b-2"
-                :class="{
-                  'text-green-main border-green-main': !completed,
-                  'text-gray-400 border-transparent hover:border-gray-400':
-                    completed,
-                }"
-                @click="completed = false"
+                class="inline-block cursor-pointer px-4 pb-2 text-green-main border-green-main text-sm font-medium border-b-2"
                 >Assets</a
               >
             </div>
