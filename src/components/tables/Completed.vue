@@ -30,7 +30,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="asset in assetList" :key="asset" class="border-b text-center">
+      <tr
+        v-for="asset in assetList.filter(onlyDone)"
+        :key="asset"
+        class="border-b text-center"
+      >
         <td class="font-medium">
           <p class="text-base">{{ asset.name }}</p>
           <p class="text-sm text-gray-500">{{ asset.description }}</p>
@@ -42,8 +46,12 @@
           <p class="text-base">{{ asset.co2 }}kg</p>
         </td>
         <td class="font-medium">
-          <p class="text-base">{{ asset.eol }}</p>
-          <p class="text-sm text-gray-500">Added on: {{ asset.addedOn }}</p>
+          <p class="text-base">
+            {{ new Date(asset.eol).toLocaleDateString() }}
+          </p>
+          <p class="text-sm text-gray-500">
+            Added on: {{ new Date(asset.createdAt).toLocaleDateString() }}
+          </p>
         </td>
         <td class="font-medium items-center">
           <a
@@ -60,8 +68,16 @@
       </tr>
     </tbody>
   </table>
-  <div class="py-4 text-center" v-show="assetList.length === 0">
-    <p class="inline-flex items-center text-green-main font-medium">
+  <div class="py-4 text-center" v-show="assetList.length === 0 || loading">
+    <font-awesome-icon
+      icon="fan"
+      class="text-green-main h-16 w-16 animate-spin"
+      v-show="loading"
+    />
+    <p
+      class="inline-flex items-center text-green-main font-medium"
+      v-show="!loading"
+    >
       <font-awesome-icon icon="thermometer-full" class="w-5 h-5 mr-1" />
       <span>It seems you have not yet replaced any assets.</span>
     </p>
@@ -81,6 +97,10 @@ export default defineComponent({
       type: Array,
       default: () => [],
     },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
     sort(number) {
@@ -90,6 +110,10 @@ export default defineComponent({
         this.sortDirection = "up";
         this.sortCol = number;
       }
+    },
+    onlyDone(value) {
+      // Check if the asset EOL is in past
+      return value.eol < Date.now();
     },
   },
   data: () => ({
