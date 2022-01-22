@@ -1,9 +1,16 @@
 <template>
-  <delete
+  <Warning
+    v-for="item in warningList"
+    :text="item"
+    :key="item"
+    @removeWarning="removeWarning($event)"
+  />
+  <Delete
     v-for="item in deleteList"
     :deleteLink="item"
     :key="item"
     @removeDelete="removeDelete($event)"
+    @addWarning="addWarning($event)"
   />
   <section class="py-8">
     <div class="container px-4 mx-auto">
@@ -28,11 +35,12 @@
 <script>
 import { defineComponent } from "vue";
 import GoalItem from "./GoalItem.vue";
+import Warning from "@/components/alerts/Warning.vue";
 import Delete from "@/components/alerts/Delete.vue";
 import AddButton from "@/components/AddButton.vue";
 
 export default defineComponent({
-  components: { GoalItem, Delete, AddButton },
+  components: { GoalItem, Delete, AddButton, Warning },
   props: {
     goals: {
       type: Array,
@@ -51,6 +59,14 @@ export default defineComponent({
     randomChar() {
       const chars = "+-";
       return chars.charAt(Math.floor(Math.random() * chars.length));
+    },
+    addWarning(text) {
+      if (!this.warningList.includes(text)) {
+        this.warningList.push(text);
+      }
+    },
+    removeWarning(text) {
+      this.warningList.splice(this.warningList.indexOf(text), 1);
     },
     addDelete(id) {
       if (!this.deleteList.includes(id)) {
