@@ -1,4 +1,11 @@
 <template>
+  <Warning
+    class="container px-4 mx-auto"
+    v-for="item in warningList"
+    :text="item"
+    :key="item"
+    @removeWarning="removeWarning($event)"
+  />
   <section class="py-8">
     <div class="container px-4 mx-auto">
       <div class="p-6 bg-white shadow rounded">
@@ -20,6 +27,7 @@
           v-if="page === 3"
           ref="page3"
           :values="data"
+          :loading="loading"
           @next="getPage3('n')"
           @previous="getPage3('p')"
         />
@@ -30,20 +38,59 @@
 
 <script>
 import { defineComponent } from "vue";
+import Warning from "@/components/alerts/Warning.vue";
 import Page1 from "@/components/wizard/add/Page1.vue";
 import Page2 from "@/components/wizard/add/Page2.vue";
 import Page3 from "@/components/wizard/add/Page3.vue";
 
 export default defineComponent({
   components: {
+    Warning,
     Page1,
     Page2,
     Page3,
   },
   methods: {
-    handleForm() {
+    addWarning(text) {
+      if (!this.warningList.includes(text)) {
+        this.warningList.push(text);
+      }
+    },
+    removeWarning(text) {
+      this.warningList.splice(this.warningList.indexOf(text), 1);
+    },
+    success() {
       this.data = {};
       this.page = 1;
+    },
+    sendRequest() {
+      this.loading = true;
+      const requestOptions = {
+        method: "POST",
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          ...this.data,
+          eol: Date.parse(this.data.eol),
+        }),
+      };
+      fetch(process.env.VUE_APP_APIURL + "/v1/assets/add", requestOptions)
+        .then(async (response) => {
+          const data = await response.json();
+
+          // check for error response
+          if (await !response.ok) {
+            this.addWarning(data.message);
+            this.loading = false;
+            return;
+          }
+
+          this.loading = false;
+          this.success();
+        })
+        .catch(() => {
+          this.addWarning("An error occurred, please retry.");
+          this.loading = false;
+        });
     },
     getPage1(to) {
       this.data = { ...this.data, ...this.$refs.page1.getValues() };
@@ -62,7 +109,7 @@ export default defineComponent({
     getPage3(to) {
       this.data = { ...this.data, ...this.$refs.page3.getValues() };
       if (to === "n") {
-        this.handleForm();
+        this.sendRequest();
       } else {
         this.previous();
       }
@@ -78,6 +125,8 @@ export default defineComponent({
     return {
       page: 1,
       data: {},
+      warningList: [],
+      loading: false,
     };
   },
 });

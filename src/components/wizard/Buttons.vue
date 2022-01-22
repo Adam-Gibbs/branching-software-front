@@ -15,14 +15,23 @@
         class="flex items-center w-full justify-center py-2 font-bold text-white bg-green-main hover:bg-green-highlight rounded transition"
         @click="emitNext"
       >
-        <span v-show="!last">Next</span>
+        <span v-show="!last && !loading">Next</span>
         <font-awesome-icon
-          v-show="!last"
+          v-show="!last && !loading"
           icon="chevron-right"
           class="h-4 w-8"
         />
-        <span v-show="last">Submit</span>
-        <font-awesome-icon v-show="last" icon="paper-plane" class="h-4 w-8" />
+        <span v-show="last && !loading">Submit</span>
+        <font-awesome-icon
+          v-show="last && !loading"
+          icon="paper-plane"
+          class="h-4 w-8"
+        />
+        <font-awesome-icon
+          icon="fan"
+          class="h-6 w-6 animate-spin"
+          v-show="loading"
+        />
       </button>
     </div>
   </div>
@@ -40,6 +49,10 @@ export default defineComponent({
     last: {
       type: Boolean,
       required: true,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {
