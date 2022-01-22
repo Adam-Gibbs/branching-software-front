@@ -4,7 +4,7 @@
       <div class="flex flex-wrap -mx-4">
         <Details
           title="Details about Project"
-          subtitle="Details about this project."
+          subtitle="Details about this project"
           name="NAME"
           :description="[
             'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo omnis sint culpa incidunt excepturi voluptates minus accusantium tempora mollitia soluta vel error, molestias ipsam corrupti iusto sed maxime velit. Inventore!',
@@ -16,7 +16,7 @@
         <Curve />
         <Details
           title="Details about Project Submitter"
-          subtitle="Details about the contractor who submitted this project."
+          subtitle="Details about the contractor who submitted this project"
           name="NAME"
           :description="[
             'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo omnis sint culpa incidunt excepturi voluptates minus accusantium tempora mollitia soluta vel error, molestias ipsam corrupti iusto sed maxime velit. Inventore!',

@@ -88,7 +88,7 @@ export default defineComponent({
           this.success();
         })
         .catch(() => {
-          this.addWarning("An error occurred, please retry.");
+          this.addWarning("An error occurred, please retry");
           this.loading = false;
         });
     },

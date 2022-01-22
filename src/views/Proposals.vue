@@ -115,7 +115,7 @@ export default defineComponent({
           this.asset = data.result;
         })
         .catch(() => {
-          this.addWarning("An error occurred, please retry.");
+          this.addWarning("An error occurred, please retry");
           this.loading = false;
         });
     },

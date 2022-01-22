@@ -2,7 +2,7 @@
   <Progress value="100" />
   <Title
     title="Asset CO2 Emissions"
-    description="Details about the assets estimated CO2 emissions."
+    description="Details about the assets estimated CO2 emissions"
     icon="smog"
   />
   <Number

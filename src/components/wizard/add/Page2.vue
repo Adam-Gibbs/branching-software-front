@@ -2,7 +2,7 @@
   <Progress value="66" />
   <Title
     title="Asset Location and EOL Details"
-    description="Details about the assets location and its estimated end of life."
+    description="Details about the assets location and its estimated end of life"
     icon="compass"
   />
   <div class="flex flex-wrap -mx-3 mb-6">
