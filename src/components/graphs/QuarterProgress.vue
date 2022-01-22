@@ -3,7 +3,12 @@
     <div class="flex mb-3 items-center justify-between">
       <h3 class="text-gray-500" v-html="title"></h3>
     </div>
-    <div class="flex items-center mb-3">
+    <font-awesome-icon
+      icon="fan"
+      class="text-green-main h-16 w-16 animate-spin"
+      v-show="loading"
+    />
+    <div class="flex items-center mb-3" v-if="!loading">
       <span class="text-4xl font-bold">{{ value }}</span>
       <span
         v-if="change"
@@ -12,13 +17,13 @@
         >{{ change }}</span
       >
     </div>
-    <div class="relative w-full h-1 mb-2 bg-gray-200 rounded">
+    <div class="relative w-full h-1 mb-2 bg-gray-200 rounded" v-if="!loading">
       <div
         class="absolute top-0 left-0 h-full bg-green-main rounded"
         :style="`width: ${progress}%`"
       ></div>
     </div>
-    <p class="text-xs text-gray-400">{{ subtitle }}</p>
+    <p class="text-xs text-gray-400" v-if="!loading">{{ subtitle }}</p>
   </div>
 </template>
 
@@ -46,6 +51,10 @@ export default defineComponent({
     change: {
       type: String,
       default: "",
+    },
+    loading: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {

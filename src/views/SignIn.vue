@@ -120,7 +120,7 @@ export default defineComponent({
       }
     },
     signPass(response) {
-      localStorage.setItem("userId", response.id);
+      localStorage.setItem("userId", response.result.id);
       if (this.$route.query.go) {
         router.push({ name: this.$route.query.go });
       } else {
@@ -138,10 +138,7 @@ export default defineComponent({
           password: this.password,
         }),
       };
-      fetch(
-        "https://dt6hs018wd.execute-api.eu-west-2.amazonaws.com/dev/v1/signin",
-        requestOptions
-      )
+      fetch(process.env.VUE_APP_APIURL + "/v1/signin", requestOptions)
         .then(async (response) => {
           const data = await response.json();
 
