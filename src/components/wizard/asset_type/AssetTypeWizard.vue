@@ -53,7 +53,7 @@ export default defineComponent({
           ...this.data,
         }),
       };
-      fetch(process.env.VUE_APP_APIURL + "/v1/asset-type/add", requestOptions)
+      fetch(process.env.VUE_APP_APIURL + "/v1/asset-types/add", requestOptions)
         .then(async (response) => {
           const data = await response.json();
 

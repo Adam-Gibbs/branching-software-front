@@ -14,7 +14,7 @@
     >
       <option disabled selected></option>
       <option v-for="option in options" :key="option">
-        {{ option }}
+        {{ option.name }}
       </option>
     </select>
     <p v-show="alert" class="text-red-500 text-xs italic">
