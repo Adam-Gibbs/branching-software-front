@@ -34,15 +34,15 @@
             @toggleOpen="toggleOpen($event)"
           />
           <Link
-            title="Past Year"
-            icon="history"
-            path="/past"
+            title="Location Stats"
+            icon="map-marker-alt"
+            path="/location"
             @toggleOpen="toggleOpen($event)"
           />
           <Link
-            title="Current Stats"
-            icon="bullseye"
-            path="/current"
+            title="Past Year"
+            icon="history"
+            path="/past"
             @toggleOpen="toggleOpen($event)"
           />
           <Link

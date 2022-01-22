@@ -39,9 +39,9 @@ const routes = [
     },
   },
   {
-    path: "/current",
-    name: "Current Stats",
-    component: () => import("../views/Current.vue"),
+    path: "/location",
+    name: "Location Stats",
+    component: () => import("../views/Location.vue"),
     meta: {
       authRequired: true,
     },

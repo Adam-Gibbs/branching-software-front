@@ -2,11 +2,12 @@
   <Nav />
   <div class="mx-auto lg:ml-80">
     <Header
-      icon="bullseye"
-      title="Current Stats"
+      icon="map-marker-alt"
+      title="Location Stats"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non
               commodo purus."
     />
+    <TopBoxes />
     <long-bar
       title="Data"
       :xaxisData="[
@@ -26,6 +27,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import Header from "@/components/Header.vue";
+import TopBoxes from "@/components/location/TopBoxes.vue";
 import LongBar from "@/components/graphs/LongBar.vue";
 import LineMix from "@/components/graphs/LineMix.vue";
 import Nav from "@/components/Nav.vue";
@@ -34,6 +36,7 @@ export default defineComponent({
   components: {
     Nav,
     Header,
+    TopBoxes,
     LongBar,
     LineMix,
   },
