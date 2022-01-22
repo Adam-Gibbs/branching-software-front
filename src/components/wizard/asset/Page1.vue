@@ -9,21 +9,26 @@
     <div class="w-full md:w-1/2 px-3">
       <Text
         title="Asset Name"
-        placeholder="XYZ Home Boiler"
+        placeholder="Home Boiler"
         ref="name"
         :required="true"
         :value="values.name"
+        :disable="disable"
         @empty="addEmpty('name')"
       />
     </div>
     <div class="w-full flex md:w-1/2 px-3 mb-6 md:mb-0 items-center">
       <add-dropdown
         title="Asset Type"
-        :options="['A', 'B']"
+        link="/v1/asset-types/all"
         ref="type"
         :required="true"
         :value="values.type"
+        :disable="disable"
         @empty="addEmpty('type')"
+        @add-pressed="emitNewType"
+        @addWarning="addWarning($event)"
+        @removeWarning="removeWarning($event)"
       />
     </div>
   </div>
@@ -34,6 +39,7 @@
         placeholder="Information about the asset, to aid in identification"
         ref="description"
         :value="values.description"
+        :disable="disable"
         @empty="addEmpty('description')"
       />
     </div>
@@ -43,6 +49,7 @@
         placeholder="Add an optional image for better description"
         ref="image"
         :value="values.image"
+        :disable="disable"
         @empty="addEmpty('image')"
       />
     </div>
@@ -50,6 +57,7 @@
   <Buttons
     :first="first"
     :last="last"
+    :disable="disable"
     @next="emitNext"
     @previous="emitPrevious"
   />
@@ -80,8 +88,18 @@ export default defineComponent({
       type: Object,
       required: true,
     },
+    disable: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
+    addWarning(text) {
+      this.$emit("addWarning", text);
+    },
+    removeWarning(text) {
+      this.$emit("removeWarning", text);
+    },
     addEmpty(key) {
       if (!this.emptyFields.includes(key)) {
         this.emptyFields.push(key);
@@ -108,6 +126,9 @@ export default defineComponent({
     },
     emitPrevious() {
       this.$emit("previous");
+    },
+    emitNewType() {
+      this.$emit("new-type");
     },
   },
   data() {

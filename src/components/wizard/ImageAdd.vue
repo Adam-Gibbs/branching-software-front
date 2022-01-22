@@ -20,8 +20,8 @@
   </div>
   <div class="w-full md:w-1/6">
     <button
-      class="block self-start ml-3 bg-green-main px-2 py-1 rounded hover:bg-green-highlight"
-      :class="{ 'mt-4': !alert }"
+      class="block self-start ml-3 bg-green-main px-2 py-1 rounded"
+      :class="{ 'mt-4': !alert, 'hover:bg-green-highlight': !disable }"
     >
       <font-awesome-icon icon="camera" class="h-4 w-4 text-gray-100" />
     </button>
@@ -48,6 +48,10 @@ export default defineComponent({
     value: {
       type: String,
       default: "",
+    },
+    disable: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {

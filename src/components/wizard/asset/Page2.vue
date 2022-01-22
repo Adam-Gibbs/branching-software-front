@@ -9,11 +9,15 @@
     <div class="w-full flex md:w-1/2 px-3 mb-6 md:mb-0 items-center">
       <add-dropdown
         title="Asset Location"
-        :options="['A', 'B']"
+        link="/v1/locations/all"
         ref="location"
         :required="true"
         :value="values.location"
+        :disable="disable"
         @empty="addEmpty('location')"
+        @add-pressed="emitNewLocation"
+        @addWarning="addWarning($event)"
+        @removeWarning="removeWarning($event)"
       />
     </div>
     <div class="w-full flex md:w-1/2 px-3 mb-6 md:mb-0 items-center">
@@ -23,6 +27,7 @@
         ref="eol"
         :required="true"
         :value="values.eol"
+        :disable="disable"
         @empty="addEmpty('eol')"
       />
     </div>
@@ -30,6 +35,7 @@
   <Buttons
     :first="first"
     :last="last"
+    :disable="disable"
     @next="emitNext"
     @previous="emitPrevious"
   />
@@ -56,8 +62,18 @@ export default defineComponent({
       type: Object,
       required: true,
     },
+    disable: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
+    addWarning(text) {
+      this.$emit("addWarning", text);
+    },
+    removeWarning(text) {
+      this.$emit("removeWarning", text);
+    },
     addEmpty(key) {
       if (!this.emptyFields.includes(key)) {
         this.emptyFields.push(key);
@@ -82,6 +98,9 @@ export default defineComponent({
     },
     emitPrevious() {
       this.$emit("previous");
+    },
+    emitNewLocation() {
+      this.$emit("new-location");
     },
   },
   data() {

@@ -5,17 +5,15 @@
     description="Name and define your goal"
     icon="medal"
   />
-  <div class="flex flex-wrap -mx-3 w-full px-3 mb-6">
-    <Text
-      title="Name of Goal"
-      placeholder="Reduce Carbon Emissions to 200kg per year"
-      ref="name"
-      :value="values.name"
-      :required="true"
-      @empty="addEmpty('name')"
-    />
-  </div>
-  <div class="flex flex-wrap -mx-3 mb-6">
+  <Text
+    title="Name of Goal"
+    placeholder="Reduce Carbon Emissions to 200kg per year"
+    ref="name"
+    :value="values.name"
+    :required="true"
+    @empty="addEmpty('name')"
+  />
+  <div class="flex flex-wrap -mx-3 my-6">
     <div class="w-full md:w-1/2 px-3 items-center">
       <Dropdown
         title="Monitored Value"
