@@ -2,7 +2,7 @@
   <Progress value="33" />
   <Title
     title="Asset Description"
-    description="Basic Details about the asset type and optional image."
+    description="Basic Details about the asset type and optional image"
     icon="tape"
   />
   <div class="flex flex-wrap -mx-3 mb-6">
@@ -31,7 +31,7 @@
     <div class="w-full md:w-1/2 px-3">
       <large-text
         title="Asset Description"
-        placeholder="Information about the asset, to aid in identification."
+        placeholder="Information about the asset, to aid in identification"
         ref="description"
         :value="values.description"
         @empty="addEmpty('description')"

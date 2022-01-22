@@ -31,7 +31,7 @@
           <div class="w-full md:w-1/3 px-4 mb-6 lg:mb-0">
             <quarter-progress
               :loading="asset.id === undefined"
-              :progress="dateProgressValue(asset)"
+              :progress="dateProgressValue(asset).toString()"
               title="Date of expected end of life"
               :value="new Date(asset.eol).toLocaleDateString()"
               :subtitle="findLargestUntil(asset.eol)"
@@ -115,7 +115,7 @@ export default defineComponent({
           this.asset = data.result;
         })
         .catch(() => {
-          this.addWarning("An error occurred, please retry.");
+          this.addWarning("An error occurred, please retry");
           this.loading = false;
         });
     },

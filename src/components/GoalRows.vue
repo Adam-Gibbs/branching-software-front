@@ -1,21 +1,29 @@
 <template>
-  <delete
+  <Warning
+    v-for="item in warningList"
+    :text="item"
+    :key="item"
+    @removeWarning="removeWarning($event)"
+  />
+  <Delete
     v-for="item in deleteList"
     :deleteLink="item"
     :key="item"
     @removeDelete="removeDelete($event)"
+    @addWarning="addWarning($event)"
   />
   <section class="py-8">
     <div class="container px-4 mx-auto">
+      <add-button class="mb-4" title="Add New Goals" link="/goals/add" />
       <div class="flex flex-wrap -m-4">
         <div v-for="goal in goals" :key="goal" class="w-full lg:w-1/2 p-4">
           <goal-item
-            :change="goal.change"
-            :subtitle="goal.subtitle"
-            :progress="goal.progress"
-            :title="goal.title"
-            :value="goal.value"
-            :deleteLink="goal.deleteLink"
+            :change="randomChar() + random(1, 20).toString() + '%'"
+            :subtitle="goal.type"
+            :progress="random(0, 100)"
+            :title="goal.name"
+            :value="goal.targetValue"
+            :id="goal.id"
             @addDelete="addDelete($event)"
           />
         </div>
@@ -27,10 +35,12 @@
 <script>
 import { defineComponent } from "vue";
 import GoalItem from "./GoalItem.vue";
+import Warning from "@/components/alerts/Warning.vue";
 import Delete from "@/components/alerts/Delete.vue";
+import AddButton from "@/components/AddButton.vue";
 
 export default defineComponent({
-  components: { GoalItem, Delete },
+  components: { GoalItem, Delete, AddButton, Warning },
   props: {
     goals: {
       type: Array,
@@ -43,9 +53,24 @@ export default defineComponent({
     };
   },
   methods: {
-    addDelete(link) {
-      if (!this.deleteList.includes(link)) {
-        this.deleteList.push(link);
+    random(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+    randomChar() {
+      const chars = "+-";
+      return chars.charAt(Math.floor(Math.random() * chars.length));
+    },
+    addWarning(text) {
+      if (!this.warningList.includes(text)) {
+        this.warningList.push(text);
+      }
+    },
+    removeWarning(text) {
+      this.warningList.splice(this.warningList.indexOf(text), 1);
+    },
+    addDelete(id) {
+      if (!this.deleteList.includes(id)) {
+        this.deleteList.push({ link: "/v1/goals/delete", id: id });
       }
     },
     removeDelete(link) {
