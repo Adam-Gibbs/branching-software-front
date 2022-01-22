@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import router from "@/router";
 import { defineComponent } from "vue";
 import Warning from "@/components/alerts/Warning.vue";
 import Page1 from "@/components/wizard/goal/Page1.vue";
@@ -41,6 +42,9 @@ export default defineComponent({
     },
     success() {
       this.data = {};
+      router.push({
+        name: "Goals",
+      });
     },
     sendRequest() {
       this.loading = true;
@@ -49,10 +53,9 @@ export default defineComponent({
         body: JSON.stringify({
           userId: localStorage.getItem("userId"),
           ...this.data,
-          eol: Date.parse(this.data.eol),
         }),
       };
-      fetch(process.env.VUE_APP_APIURL + "/v1/assets/add", requestOptions)
+      fetch(process.env.VUE_APP_APIURL + "/v1/goals/add", requestOptions)
         .then(async (response) => {
           const data = await response.json();
 

@@ -10,6 +10,7 @@
       title="Name of Goal"
       placeholder="Reduce Carbon Emissions to 200kg per year"
       ref="name"
+      :value="values.name"
       :required="true"
       @empty="addEmpty('name')"
     />
@@ -30,6 +31,7 @@
           'Total Carbon Emissions',
         ]"
         ref="type"
+        :value="values.type"
         :required="true"
         @empty="addEmpty('type')"
       />
@@ -39,6 +41,7 @@
         title="Target value"
         placeholder="200"
         ref="targetValue"
+        :value="values.targetValue"
         :required="true"
         @empty="addEmpty('targetValue')"
       />

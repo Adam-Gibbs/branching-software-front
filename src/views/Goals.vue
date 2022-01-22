@@ -43,13 +43,13 @@ export default defineComponent({
   data: () => ({
     warningList: Array<string>(),
     loading: false,
-    assets: Array<any>(),
+    goals: Array<any>(),
   }),
-  // mounted() {
-  //   this.$nextTick(function () {
-  //     this.sendRequest();
-  //   });
-  // },
+  mounted() {
+    this.$nextTick(function () {
+      this.sendRequest();
+    });
+  },
   methods: {
     addWarning(text: string) {
       if (!this.warningList.includes(text)) {
@@ -78,7 +78,7 @@ export default defineComponent({
           }
 
           this.loading = false;
-          this.assets = data.result;
+          this.goals = data.result;
         })
         .catch(() => {
           this.addWarning("An error occurred, please retry");
