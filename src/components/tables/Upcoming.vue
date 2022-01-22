@@ -61,7 +61,7 @@
         </td>
         <td>
           <p class="mb-1 text-sm font-medium">
-            {{ findLargestUntil(asset.eol) }} until EOL
+            {{ findLargestUntil(asset.eol) }}
           </p>
           <div class="relative h-1 w-auto bg-indigo-50 rounded-full">
             <div
@@ -130,7 +130,7 @@ export default defineComponent({
     },
     onlyRecent(value) {
       // Check if the asset EOL is within past 3 months
-      return value.eol - 7889400000 < Date.now();
+      return value.eol - 7889400000 < Date.now() && value.eol > Date.now();
     },
     dateProgressValue(asset) {
       const mid = Date.now() - asset.createdAt;
