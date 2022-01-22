@@ -18,6 +18,7 @@
   <Buttons
     :first="first"
     :last="last"
+    :loading="loading"
     @next="emitNext"
     @previous="emitPrevious"
   />
@@ -41,6 +42,10 @@ export default defineComponent({
     values: {
       type: Object,
       required: true,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {

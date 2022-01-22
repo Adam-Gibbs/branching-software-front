@@ -12,6 +12,7 @@
         <page-1
           ref="page1"
           :values="data"
+          :loading="loading"
           @next="sendRequest"
           @previous="emitGoBack"
         />
