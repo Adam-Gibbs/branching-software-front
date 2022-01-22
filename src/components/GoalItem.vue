@@ -43,7 +43,7 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    deleteLink: {
+    id: {
       type: String,
       required: true,
     },
@@ -72,7 +72,7 @@ export default defineComponent({
       return `bg-${this.colors[indexColor]}-${this.random(4, 4)}00`;
     },
     emitAddDelete: function () {
-      this.$emit("addDelete", this.deleteLink);
+      this.$emit("addDelete", this.id);
     },
   },
   data: function () {

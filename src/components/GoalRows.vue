@@ -11,12 +11,12 @@
       <div class="flex flex-wrap -m-4">
         <div v-for="goal in goals" :key="goal" class="w-full lg:w-1/2 p-4">
           <goal-item
-            :change="goal.change"
-            :subtitle="goal.subtitle"
-            :progress="goal.progress"
-            :title="goal.title"
-            :value="goal.value"
-            :deleteLink="goal.deleteLink"
+            :change="randomChar() + random(1, 20).toString() + '%'"
+            :subtitle="goal.type"
+            :progress="random(0, 100)"
+            :title="goal.name"
+            :value="goal.targetValue"
+            :id="goal.id"
             @addDelete="addDelete($event)"
           />
         </div>
@@ -45,9 +45,16 @@ export default defineComponent({
     };
   },
   methods: {
-    addDelete(link) {
-      if (!this.deleteList.includes(link)) {
-        this.deleteList.push(link);
+    random(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+    randomChar() {
+      const chars = "+-";
+      return chars.charAt(Math.floor(Math.random() * chars.length));
+    },
+    addDelete(id) {
+      if (!this.deleteList.includes(id)) {
+        this.deleteList.push({ link: "/v1/goals/delete", id: id });
       }
     },
     removeDelete(link) {

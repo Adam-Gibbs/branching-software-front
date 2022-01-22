@@ -25,8 +25,7 @@
             </h3>
             <button
               class="ml-auto inline-block w-full md:w-auto px-3 py-1 font-small text-white bg-red-800 hover:bg-red-700 rounded transition"
-              :href="deleteLink"
-              @click="emitRemoveDelete()"
+              @click="deleteClick()"
             >
               Confirm Delete
             </button>
@@ -53,13 +52,40 @@ export default defineComponent({
       required: true,
     },
     deleteLink: {
-      type: String,
+      type: Object,
       required: true,
     },
   },
   methods: {
-    emitRemoveDelete: function () {
+    emitRemoveDelete() {
       this.$emit("removeDelete", this.deleteLink);
+    },
+    emitAddWarning(message: string) {
+      this.$emit("addWarning", message);
+    },
+    deleteClick() {
+      const requestOptions = {
+        method: "POST",
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          id: this.deleteLink.id,
+        }),
+      };
+      fetch(process.env.VUE_APP_APIURL + "/v1/signin", requestOptions)
+        .then(async (response) => {
+          const data = await response.json();
+
+          // check for error response
+          if (await !response.ok) {
+            this.emitAddWarning(data.message);
+            return;
+          }
+
+          this.emitRemoveDelete();
+        })
+        .catch(() => {
+          this.emitAddWarning("An error occurred, please retry");
+        });
     },
   },
 });
