@@ -13,7 +13,9 @@
         ref="location"
         :required="true"
         :value="values.location"
+        :disable="disable"
         @empty="addEmpty('location')"
+        @add-pressed="emitNewLocation"
       />
     </div>
     <div class="w-full flex md:w-1/2 px-3 mb-6 md:mb-0 items-center">
@@ -23,6 +25,7 @@
         ref="eol"
         :required="true"
         :value="values.eol"
+        :disable="disable"
         @empty="addEmpty('eol')"
       />
     </div>
@@ -30,6 +33,7 @@
   <Buttons
     :first="first"
     :last="last"
+    :disable="disable"
     @next="emitNext"
     @previous="emitPrevious"
   />
@@ -55,6 +59,10 @@ export default defineComponent({
     values: {
       type: Object,
       required: true,
+    },
+    disable: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {
@@ -82,6 +90,9 @@ export default defineComponent({
     },
     emitPrevious() {
       this.$emit("previous");
+    },
+    emitNewLocation() {
+      this.$emit("new-location");
     },
   },
   data() {

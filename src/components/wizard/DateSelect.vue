@@ -15,6 +15,7 @@
         />
       </div>
       <input
+        :disabled="disable"
         class="appearance-none block w-full mb-2 bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
         :class="alert ? 'border-red-500' : 'border-gray-200'"
         type="date"
@@ -49,6 +50,10 @@ export default defineComponent({
     value: {
       type: String,
       default: "",
+    },
+    disable: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {

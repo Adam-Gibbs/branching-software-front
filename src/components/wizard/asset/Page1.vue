@@ -9,10 +9,11 @@
     <div class="w-full md:w-1/2 px-3">
       <Text
         title="Asset Name"
-        placeholder="XYZ Home Boiler"
+        placeholder="Home Boiler"
         ref="name"
         :required="true"
         :value="values.name"
+        :disable="disable"
         @empty="addEmpty('name')"
       />
     </div>
@@ -23,7 +24,9 @@
         ref="type"
         :required="true"
         :value="values.type"
+        :disable="disable"
         @empty="addEmpty('type')"
+        @add-pressed="emitNewType"
       />
     </div>
   </div>
@@ -34,6 +37,7 @@
         placeholder="Information about the asset, to aid in identification"
         ref="description"
         :value="values.description"
+        :disable="disable"
         @empty="addEmpty('description')"
       />
     </div>
@@ -43,6 +47,7 @@
         placeholder="Add an optional image for better description"
         ref="image"
         :value="values.image"
+        :disable="disable"
         @empty="addEmpty('image')"
       />
     </div>
@@ -50,6 +55,7 @@
   <Buttons
     :first="first"
     :last="last"
+    :disable="disable"
     @next="emitNext"
     @previous="emitPrevious"
   />
@@ -80,6 +86,10 @@ export default defineComponent({
       type: Object,
       required: true,
     },
+    disable: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
     addEmpty(key) {
@@ -108,6 +118,9 @@ export default defineComponent({
     },
     emitPrevious() {
       this.$emit("previous");
+    },
+    emitNewType() {
+      this.$emit("new-type");
     },
   },
   data() {

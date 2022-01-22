@@ -6,6 +6,7 @@
       {{ title }}
     </label>
     <select
+      :disabled="disable"
       class="w-full block px-4 py-3 mb-2 text-sm bg-gray-200 text-gray-700 border focus:outline-none focus:bg-white focus:border-gray-500 rounded"
       v-model="item"
       @blur="checkEmpty"
@@ -22,8 +23,9 @@
   </div>
   <div class="w-full md:w-1/6">
     <button
-      class="block self-start ml-3 bg-green-main px-2 py-1 rounded hover:bg-green-highlight"
-      :class="{ 'mt-4': !alert }"
+      class="block self-start ml-3 bg-green-main px-2 py-1 rounded"
+      :class="{ 'mt-4': !alert, 'hover:bg-green-highlight': !disable }"
+      @click="emitAddPressed"
     >
       <font-awesome-icon icon="plus" class="h-4 w-4 text-gray-100" />
     </button>
@@ -51,6 +53,10 @@ export default defineComponent({
       type: String,
       default: "",
     },
+    disable: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
     checkEmpty() {
@@ -66,6 +72,9 @@ export default defineComponent({
     getValue() {
       this.checkEmpty();
       return this.item;
+    },
+    emitAddPressed() {
+      this.$emit("add-pressed");
     },
   },
   data() {

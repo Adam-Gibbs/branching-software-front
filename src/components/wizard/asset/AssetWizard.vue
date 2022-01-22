@@ -6,22 +6,26 @@
     :key="item"
     @removeWarning="removeWarning($event)"
   />
-  <section class="py-8">
+  <section class="py-8" :class="{ 'blur-sm': disable }">
     <div class="container px-4 mx-auto">
       <div class="p-6 bg-white shadow rounded">
         <page-1
           v-if="page === 1"
           ref="page1"
           :values="data"
+          :disable="disable"
           @next="getPage1('n')"
           @previous="getPage1('p')"
+          @new-type="showNewType"
         />
         <page-2
           v-if="page === 2"
           ref="page2"
           :values="data"
+          :disable="disable"
           @next="getPage2('n')"
           @previous="getPage2('p')"
+          @new-location="showNewLocation"
         />
         <page-3
           v-if="page === 3"
@@ -39,9 +43,9 @@
 <script>
 import { defineComponent } from "vue";
 import Warning from "@/components/alerts/Warning.vue";
-import Page1 from "@/components/wizard/add/Page1.vue";
-import Page2 from "@/components/wizard/add/Page2.vue";
-import Page3 from "@/components/wizard/add/Page3.vue";
+import Page1 from "./Page1.vue";
+import Page2 from "./Page2.vue";
+import Page3 from "./Page3.vue";
 
 export default defineComponent({
   components: {
@@ -58,6 +62,17 @@ export default defineComponent({
     },
     removeWarning(text) {
       this.warningList.splice(this.warningList.indexOf(text), 1);
+    },
+    showNewType() {
+      this.disable = true;
+      this.$emit("new-type");
+    },
+    showNewLocation() {
+      this.disable = true;
+      this.$emit("new-location");
+    },
+    reEnable() {
+      this.disable = false;
     },
     success() {
       this.data = {};
@@ -127,6 +142,7 @@ export default defineComponent({
       data: {},
       warningList: [],
       loading: false,
+      disable: false,
     };
   },
 });

@@ -12,8 +12,8 @@
         <page-1
           ref="page1"
           :values="data"
-          @next="getPage1('n')"
-          @previous="getPage1('p')"
+          @next="sendRequest"
+          @previous="emitGoBack"
         />
       </div>
     </div>
@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import router from "@/router";
 import { defineComponent } from "vue";
 import Warning from "@/components/alerts/Warning.vue";
 import Page1 from "./Page1.vue";
@@ -40,13 +39,12 @@ export default defineComponent({
     removeWarning(text) {
       this.warningList.splice(this.warningList.indexOf(text), 1);
     },
-    success() {
+    emitGoBack() {
       this.data = {};
-      router.push({
-        name: "Goals",
-      });
+      this.$emit("go-back");
     },
     sendRequest() {
+      this.data = this.$refs.page1.getValues();
       this.loading = true;
       const requestOptions = {
         method: "POST",
@@ -55,7 +53,7 @@ export default defineComponent({
           ...this.data,
         }),
       };
-      fetch(process.env.VUE_APP_APIURL + "/v1/goals/add", requestOptions)
+      fetch(process.env.VUE_APP_APIURL + "/v1/locations/add", requestOptions)
         .then(async (response) => {
           const data = await response.json();
 
@@ -67,18 +65,12 @@ export default defineComponent({
           }
 
           this.loading = false;
-          this.success();
+          this.emitGoBack();
         })
         .catch(() => {
           this.addWarning("An error occurred, please retry");
           this.loading = false;
         });
-    },
-    getPage1(to) {
-      this.data = { ...this.data, ...this.$refs.page1.getValues() };
-      if (to === "n") {
-        this.sendRequest();
-      }
     },
   },
   data() {
