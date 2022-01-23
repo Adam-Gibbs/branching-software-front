@@ -116,6 +116,11 @@ export default defineComponent({
             enabled: true,
           },
         },
+        tooltip: {
+          x: {
+            show: false,
+          },
+        },
         colors: ["#30A51B"],
         fill: {
           type: ["solid"],

@@ -1,5 +1,5 @@
 <template>
-  <section class="p-8 px-6">
+  <section class="py-8 px-6">
     <div class="flex flex-wrap -mx-3 items-center">
       <div class="w-full lg:w-1/2 flex items-center mb-5 lg:mb-0 px-3">
         <!-- Todo: not square on size change -->

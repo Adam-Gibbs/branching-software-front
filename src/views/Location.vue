@@ -8,37 +8,32 @@
               commodo purus."
     />
     <TopBoxes />
-    <long-bar
-      title="Data"
-      :xaxisData="[
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-        21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
-      ]"
+    <Burndown
+      title="Burndown to date of Net Zero"
       :yaxisData="[
-        300, 400, 200, 350, 500, 400, 300, 200, 100, 400, 500, 300, 400, 200,
-        100, 300, 400, 200, 350, 500, 400, 300, 200, 100, 400, 500, 300, 400,
-        200, 100, 250,
+        0, 9, 5, 10, 9, 2, 2, 8, 4, 5, 4, 3, 2, 5, 1, 10, 10, 4, 2, 0, 1, 2, 7,
+        4, 7, 6, 0, 7, 11, 6,
       ]"
     />
-    <line-mix />
+    <LineMix />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import Nav from "@/components/Nav.vue";
 import Header from "@/components/Header.vue";
 import TopBoxes from "@/components/location/TopBoxes.vue";
-import LongBar from "@/components/graphs/LongBar.vue";
-import LineMix from "@/components/graphs/LineMix.vue";
-import Nav from "@/components/Nav.vue";
+import LineMix from "@/components/location/LineMix.vue";
+import Burndown from "@/components/graphs/Burndown.vue";
 
 export default defineComponent({
   components: {
     Nav,
     Header,
     TopBoxes,
-    LongBar,
     LineMix,
+    Burndown,
   },
 });
 </script>
