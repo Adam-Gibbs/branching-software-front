@@ -11,8 +11,26 @@
     <Burndown
       title="Burndown to date of Net Zero"
       :yaxisData="[
-        0, 9, 5, 10, 9, 2, 2, 8, 4, 5, 4, 3, 2, 5, 1, 10, 10, 4, 2, 0, 1, 2, 7,
-        4, 7, 6, 0, 7, 11, 6,
+        22,
+        22,
+        21,
+        19,
+        18,
+        18,
+        15,
+        14,
+        13,
+        11,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
       ]"
     />
     <LineMix />

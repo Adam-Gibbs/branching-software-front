@@ -45,8 +45,8 @@
     </div>
     <div class="w-full flex md:w-1/2 px-3 mb-6 md:mb-0 items-center">
       <image-add
-        title="Asset Type"
-        placeholder="Add an optional image for better description"
+        title="Asset QR code"
+        placeholder="Scan a QR code to link to this asset"
         ref="image"
         :value="values.image"
         :disable="disable"
