@@ -9,7 +9,7 @@
       class="fixed top-0 left-0 bottom-0 flex flex-col w-3/4 lg:w-80 sm:max-w-xs pt-6 pb-8 bg-white border-r overflow-y-auto"
     >
       <div
-        class="flex w-full items-center px-6 pb-6 mb-6 lg:border-b border-blue-50"
+        class="flex w-full items-center px-6 pb-6 lg:border-b border-blue-50"
       >
         <button
           class="text-xl font-semibold"
@@ -21,7 +21,11 @@
             alt="Icon for Branching Software"
           />
         </button>
+        <h2 class="mx-3 text-2xl">Path to Zero</h2>
       </div>
+      <h3 class="mx-3 text-lg mb-4 text-center text-gray-700">
+        Welcome {{ name }}
+      </h3>
       <div class="px-4 pb-6">
         <h3 class="mb-2 text-xs uppercase text-gray-400 font-medium">
           Dashboard
@@ -119,6 +123,7 @@ export default defineComponent({
     return {
       open: true,
       hasPast: localStorage.getItem("hasPast") === "true",
+      name: localStorage.getItem("userName"),
     };
   },
   methods: {

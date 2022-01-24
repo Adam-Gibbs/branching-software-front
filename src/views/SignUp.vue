@@ -77,6 +77,7 @@
             <button
               class="block w-full p-4 text-center text-xs text-white font-semibold leading-none bg-green-main hover:bg-green-highlight rounded"
               @click.prevent="signUp"
+              type="submit"
             >
               <p v-show="!loading">Sign Up</p>
               <font-awesome-icon
@@ -166,6 +167,7 @@ export default defineComponent({
     },
     signPass(response) {
       localStorage.setItem("userId", response.result.id);
+      localStorage.setItem("userName", response.result.firstName);
       localStorage.setItem("hasPast", false);
       router.push({
         name: "Seed",

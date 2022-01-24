@@ -11,6 +11,7 @@
     ref="name"
     :value="values.name"
     :required="true"
+    setId="add-name"
     @empty="addEmpty('name')"
   />
   <div class="flex flex-wrap -mx-3 my-6">
@@ -31,6 +32,7 @@
         ref="type"
         :value="values.type"
         :required="true"
+        setId="add-type"
         @empty="addEmpty('type')"
       />
     </div>
@@ -41,6 +43,7 @@
         ref="targetValue"
         :value="values.targetValue"
         :required="true"
+        setId="add-value"
         @empty="addEmpty('targetValue')"
       />
     </div>

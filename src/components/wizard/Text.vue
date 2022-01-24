@@ -13,6 +13,7 @@
     v-model="text"
     @blur="checkEmpty"
     :placeholder="placeholder"
+    :id="setId"
   />
   <p v-show="alert" class="text-red-500 text-xs italic">
     Please fill out this field.
@@ -43,6 +44,10 @@ export default defineComponent({
     disable: {
       type: Boolean,
       default: false,
+    },
+    setId: {
+      type: String,
+      default: "",
     },
   },
   methods: {

@@ -21,11 +21,13 @@
         <div class="w-full">
           <div class="flex">
             <h3 class="text-white font-medium">
-              Are you sure you would like to delete {{ name }}
+              Are you sure you would like to delete
+              <strong>{{ item.name }}</strong>
             </h3>
             <button
               class="ml-auto text-sm inline-block w-full md:w-auto px-3 py-1 font-small text-white bg-red-800 hover:bg-red-700 rounded transition"
               @click="deleteClick()"
+              id="delete"
             >
               <font-awesome-icon
                 icon="fan"
@@ -38,6 +40,7 @@
               class="ml-2 text-sm inline-block w-full md:w-auto px-3 py-1 font-small text-white bg-red-500 hover:bg-red-700 rounded transition"
               @click="emitRemoveDelete()"
               :disabled="loading"
+              id="cancel-delete"
             >
               Cancel
             </button>
@@ -53,11 +56,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   props: {
-    name: {
-      type: String,
-      required: true,
-    },
-    deleteLink: {
+    item: {
       type: Object,
       required: true,
     },
@@ -69,7 +68,8 @@ export default defineComponent({
   },
   methods: {
     emitRemoveDelete() {
-      this.$emit("removeDelete", this.deleteLink);
+      console.log(this.item);
+      this.$emit("removeDelete", this.item);
     },
     emitAddWarning(message: string) {
       this.$emit("addWarning", message);
@@ -80,10 +80,10 @@ export default defineComponent({
         method: "POST",
         body: JSON.stringify({
           userId: localStorage.getItem("userId"),
-          id: this.deleteLink.id,
+          id: this.item.id,
         }),
       };
-      fetch(process.env.VUE_APP_APIURL + this.deleteLink.link, requestOptions)
+      fetch(process.env.VUE_APP_APIURL + this.item.link, requestOptions)
         .then(async (response) => {
           const data = await response.json();
 

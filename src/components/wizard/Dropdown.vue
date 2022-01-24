@@ -6,9 +6,10 @@
   </label>
   <select
     class="w-full block px-4 py-3 mb-2 text-sm bg-gray-200 text-gray-700 border focus:outline-none focus:bg-white focus:border-gray-500 rounded"
-    v-model="item"
-    @blur="checkEmpty"
     :class="alert ? 'border-red-500' : 'border-gray-200'"
+    @blur="checkEmpty"
+    v-model="item"
+    :id="setId"
   >
     <option disabled selected></option>
     <option v-for="option in options" :key="option">
@@ -38,6 +39,10 @@ export default defineComponent({
       default: false,
     },
     value: {
+      type: String,
+      default: "",
+    },
+    setId: {
       type: String,
       default: "",
     },

@@ -45,6 +45,7 @@
             <button
               class="w-full p-3 text-center flex justify-center items-center text-white font-semibold leading-none bg-green-main hover:bg-green-highlight rounded"
               @click.prevent="signIn"
+              type="submit"
             >
               <p v-show="!loading">Sign In</p>
               <font-awesome-icon
@@ -128,6 +129,7 @@ export default defineComponent({
     },
     signPass(response) {
       localStorage.setItem("userId", response.result.id);
+      localStorage.setItem("userName", response.result.firstName);
       localStorage.setItem(
         "hasPast",
         Object.keys(response.result.pastData).length > 0

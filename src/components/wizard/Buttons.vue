@@ -7,6 +7,7 @@
         :class="{ 'hover:text-white hover:bg-green-highlight': !disable }"
         v-show="!first"
         @click="emitPrevious"
+        id="back"
       >
         <font-awesome-icon icon="chevron-left" class="h-4 w-8" />
         <span>Back</span>
@@ -18,6 +19,8 @@
         class="flex items-center w-full justify-center py-2 font-bold text-white bg-green-main rounded transition"
         :class="{ 'hover:bg-green-highlight': !disable }"
         @click="emitNext"
+        :id="last ? 'submit' : 'next'"
+        :type="last ? 'submit' : 'button'"
       >
         <span v-show="!last && !loading">Next</span>
         <font-awesome-icon

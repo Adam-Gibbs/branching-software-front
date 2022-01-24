@@ -2,7 +2,7 @@
   <div class="p-6 bg-white shadow rounded">
     <div class="flex mb-3 items-center justify-between">
       <h3 class="text-gray-800 uppercase font-bold text-xl">{{ title }}</h3>
-      <button @click="emitAddDelete()">
+      <button @click="emitAddDelete()" id="delete-goal">
         <font-awesome-icon icon="trash" class="h-4 w-4 text-gray-400" />
       </button>
     </div>
@@ -72,7 +72,7 @@ export default defineComponent({
       return `bg-${this.colors[indexColor]}-${this.random(4, 4)}00`;
     },
     emitAddDelete: function () {
-      this.$emit("addDelete", this.id);
+      this.$emit("addDelete", { id: this.id, name: this.title });
     },
   },
   data: function () {

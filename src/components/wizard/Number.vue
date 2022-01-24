@@ -8,10 +8,11 @@
   <input
     class="appearance-none block w-full mb-2 bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
     :class="alert ? 'border-red-500' : 'border-gray-200'"
-    type="number"
-    v-model="number"
-    @blur="checkEmpty"
     :placeholder="placeholder"
+    @blur="checkEmpty"
+    v-model="number"
+    type="number"
+    :id="setId"
   />
   <p v-show="alert" class="text-red-500 text-xs italic">
     Please fill out this field with a valid number.
@@ -37,6 +38,10 @@ export default defineComponent({
     },
     value: {
       type: Number,
+    },
+    setId: {
+      type: String,
+      default: "",
     },
   },
   methods: {

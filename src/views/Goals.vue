@@ -18,6 +18,7 @@
       :goals="goals"
       v-if="!loading || goals.length > 0"
       @reload="sendRequest"
+      @addWarning="addWarning($event)"
     />
     <section class="pb-8" v-if="loading && goals.length === 0">
       <div class="container px-4 mx-auto">
