@@ -166,8 +166,9 @@ export default defineComponent({
     },
     signPass(response) {
       localStorage.setItem("userId", response.result.id);
+      localStorage.setItem("hasPast", false);
       router.push({
-        name: "Overview",
+        name: "Seed",
       });
     },
     sendRequest() {

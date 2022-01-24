@@ -31,6 +31,14 @@ const routes = [
     },
   },
   {
+    path: "/seed",
+    name: "Seed",
+    component: () => import("../views/Seed.vue"),
+    meta: {
+      authRequired: true,
+    },
+  },
+  {
     path: "/past",
     name: "Past Year",
     component: () => import("../views/Past.vue"),

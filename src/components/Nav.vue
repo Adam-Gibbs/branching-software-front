@@ -43,6 +43,7 @@
             title="Past Year"
             icon="history"
             path="/past"
+            v-show="hasPast"
             @toggleOpen="toggleOpen($event)"
           />
           <Link
@@ -117,10 +118,12 @@ export default defineComponent({
   data: function () {
     return {
       open: true,
+      hasPast: localStorage.getItem("hasPast") === "true",
     };
   },
   methods: {
     toggleOpen: function (newValue: boolean) {
+      console.log(this.hasPast);
       this.open = newValue;
     },
     signOut: function () {

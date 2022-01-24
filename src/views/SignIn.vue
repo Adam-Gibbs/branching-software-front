@@ -128,6 +128,10 @@ export default defineComponent({
     },
     signPass(response) {
       localStorage.setItem("userId", response.result.id);
+      localStorage.setItem(
+        "hasPast",
+        Object.keys(response.result.pastData).length > 0
+      );
       if (this.$route.query.go) {
         router.push({ name: this.$route.query.go });
       } else {
