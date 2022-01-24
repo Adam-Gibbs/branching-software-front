@@ -7,9 +7,9 @@
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non
               commodo purus."
     />
-    <asset-type-wizard v-if="showType" @go-back="hideSubWizard" />
-    <location-wizard v-if="showLocation" @go-back="hideSubWizard" />
-    <asset-wizard
+    <AssetTypeWizard v-if="showType" @go-back="hideSubWizard" />
+    <LocationWizard v-if="showLocation" @go-back="hideSubWizard" />
+    <AssetWizard
       ref="assetWizard"
       @new-type="showAssetTypeWizard"
       @new-location="showLocationWizard"

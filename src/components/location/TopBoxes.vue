@@ -3,7 +3,7 @@
     <div class="container px-4 mx-auto">
       <div class="flex flex-wrap -m-4">
         <div class="w-full lg:w-1/3 p-4">
-          <single-box
+          <SingleBox
             title="Number of ongoing projects"
             icon="file-invoice"
             timeframe="currently"
@@ -13,7 +13,7 @@
           />
         </div>
         <div class="w-full lg:w-1/3 p-4">
-          <single-box
+          <SingleBox
             title="CO<sup>2</sup>e Output in past 24hrs"
             icon="cloud-meatball"
             :timeframe="`since ${yesterday()} yesterday`"
@@ -23,7 +23,7 @@
           />
         </div>
         <div class="w-full lg:w-1/3 p-4">
-          <single-box
+          <SingleBox
             title="Total CO<sup>2</sup>e Output"
             icon="cloud-meatball"
             timeframe="since 1st January 2022"

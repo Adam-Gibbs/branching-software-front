@@ -3,7 +3,7 @@
     <div class="container px-4 mx-auto">
       <div class="flex flex-wrap -m-4">
         <div class="w-full lg:w-1/3 p-4">
-          <single-box
+          <SingleBox
             title="Assets Added"
             icon="sitemap"
             timeframe="in 2021"
@@ -14,7 +14,7 @@
           />
         </div>
         <div class="w-full lg:w-1/3 p-4">
-          <single-box
+          <SingleBox
             title="Total CO<sup>2</sup>e Reduction"
             icon="compress-arrows-alt"
             timeframe="in 2021"
@@ -24,7 +24,7 @@
           />
         </div>
         <div class="w-full lg:w-1/3 p-4">
-          <single-box
+          <SingleBox
             title="Total CO<sup>2</sup>e Output"
             icon="cloud-meatball"
             timeframe="in 2021"

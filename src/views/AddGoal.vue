@@ -7,7 +7,7 @@
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non
               commodo purus."
     />
-    <goal-wizard />
+    <GoalWizard />
   </div>
 </template>
 

@@ -2,25 +2,25 @@
   <table class="table-auto w-full" v-show="assetList.length !== 0">
     <thead>
       <tr>
-        <head-item
+        <HeadItem
           :direction="sortDirection"
           title="Asset Type"
           :isCol="sortCol === '1'"
           @click="sort('1')"
         />
-        <head-item
+        <HeadItem
           :direction="sortDirection"
           title="Location"
           :isCol="sortCol === '2'"
           @click="sort('2')"
         />
-        <head-item
+        <HeadItem
           :direction="sortDirection"
           title="CO<sup>2</sup>e produced per year"
           :isCol="sortCol === '3'"
           @click="sort('3')"
         />
-        <head-item
+        <HeadItem
           :direction="sortDirection"
           title="End of Life"
           :isCol="sortCol === '4'"

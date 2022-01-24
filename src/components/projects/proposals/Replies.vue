@@ -10,7 +10,7 @@
       <div class="relative">
         <div class="absolute inset-0 h-full ml-1 w-px px-px bg-gray-300"></div>
         <div class="relative">
-          <reply-item v-for="item in replies" :key="item" :reply="item" />
+          <ReplyItem v-for="item in replies" :key="item" :reply="item" />
         </div>
         <div
           class="absolute bottom-0 pt-14 w-full text-center bg-white bg-opacity-50"

@@ -19,7 +19,7 @@
       <add-button class="mb-4" title="Add New Goals" link="/goals/add" />
       <div class="flex flex-wrap -m-4">
         <div v-for="goal in goals" :key="goal" class="w-full lg:w-1/2 p-4">
-          <goal-item
+          <GoalItem
             :change="randomChar() + random(1, 20).toString() + '%'"
             :subtitle="goal.type"
             :progress="random(0, 100)"

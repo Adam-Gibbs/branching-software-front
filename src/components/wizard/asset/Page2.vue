@@ -7,7 +7,7 @@
   />
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full flex md:w-1/2 px-3 mb-6 md:mb-0 items-center">
-      <add-dropdown
+      <AddDropdown
         title="Asset Location"
         link="/v1/locations/all"
         ref="location"
@@ -21,7 +21,7 @@
       />
     </div>
     <div class="w-full flex md:w-1/2 px-3 mb-6 md:mb-0 items-center">
-      <date-select
+      <DateSelect
         title="Estimated End of Life"
         placeholder="XYZ Home Boiler"
         ref="eol"

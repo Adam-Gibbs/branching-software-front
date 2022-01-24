@@ -9,7 +9,7 @@
   <section class="pb-8">
     <div class="container px-4 mx-auto">
       <div class="p-6 bg-white shadow rounded">
-        <page-1
+        <Page1
           ref="page1"
           :values="data"
           :loading="loading"
