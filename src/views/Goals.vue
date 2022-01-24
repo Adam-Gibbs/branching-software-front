@@ -14,8 +14,12 @@
       :key="item"
       @removeWarning="removeWarning($event)"
     />
-    <GoalRows :goals="goals" v-if="!loading" />
-    <section class="pb-8" v-if="loading">
+    <GoalRows
+      :goals="goals"
+      v-if="!loading || goals.length > 0"
+      @reload="sendRequest"
+    />
+    <section class="pb-8" v-if="loading && goals.length === 0">
       <div class="container px-4 mx-auto">
         <font-awesome-icon
           icon="fan"
@@ -60,6 +64,7 @@ export default defineComponent({
       this.warningList.splice(this.warningList.indexOf(text), 1);
     },
     sendRequest() {
+      console.log("hi");
       this.loading = true;
       const requestOptions = {
         method: "POST",

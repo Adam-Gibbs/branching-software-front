@@ -78,6 +78,7 @@ export default defineComponent({
     },
     removeDelete(link) {
       this.deleteList.splice(this.deleteList.indexOf(link), 1);
+      this.$emit("reload");
     },
   },
 });
