@@ -1,11 +1,13 @@
 <template>
   <Warning
+    class="container mb-4 mx-auto"
     v-for="item in warningList"
     :text="item"
     :key="item"
     @removeWarning="removeWarning($event)"
   />
   <Delete
+    class="mb-4"
     v-for="item in deleteList"
     :deleteLink="item"
     :key="item"
@@ -50,6 +52,7 @@ export default defineComponent({
   data: function () {
     return {
       deleteList: [],
+      warningList: [],
     };
   },
   methods: {

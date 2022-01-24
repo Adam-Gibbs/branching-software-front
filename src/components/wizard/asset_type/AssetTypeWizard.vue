@@ -1,6 +1,6 @@
 <template>
   <Warning
-    class="container px-4 mx-auto"
+    class="container mb-4 mx-auto"
     v-for="item in warningList"
     :text="item"
     :key="item"
@@ -30,6 +30,13 @@ export default defineComponent({
   components: {
     Warning,
     Page1,
+  },
+  data() {
+    return {
+      data: {},
+      warningList: [],
+      loading: false,
+    };
   },
   methods: {
     addWarning(text) {
@@ -73,13 +80,6 @@ export default defineComponent({
           this.loading = false;
         });
     },
-  },
-  data() {
-    return {
-      data: {},
-      warningList: [],
-      loading: false,
-    };
   },
 });
 </script>
