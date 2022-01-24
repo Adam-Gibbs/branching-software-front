@@ -51,7 +51,7 @@ export default defineComponent({
     },
   },
   watch: {
-    yaxisData: {
+    dataA: {
       immediate: true,
       handler() {
         this.series = [

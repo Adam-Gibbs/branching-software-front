@@ -7,7 +7,7 @@
             title="Assets Added"
             icon="sitemap"
             timeframe="in 2021"
-            value="100"
+            :value="data.assetsAdded"
             change="+12"
             link="/add"
             comparedTo="this year"
@@ -18,7 +18,7 @@
             title="Total CO<sup>2</sup>e Reduction"
             icon="compress-arrows-alt"
             timeframe="in 2021"
-            value="5642kg"
+            :value="data.co2Reduction"
             change="-85"
             comparedTo="this year"
           />
@@ -28,7 +28,7 @@
             title="Total CO<sup>2</sup>e Output"
             icon="cloud-meatball"
             timeframe="in 2021"
-            value="100"
+            :value="data.totalCO2Output"
             change="+12"
             comparedTo="this year"
           />
@@ -44,5 +44,11 @@ import SingleBox from "@/components/data_boxes/Single.vue";
 
 export default defineComponent({
   components: { SingleBox },
+  props: {
+    data: {
+      type: Object,
+      required: true,
+    },
+  },
 });
 </script>

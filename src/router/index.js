@@ -139,10 +139,12 @@ router.beforeEach((to, from, next) => {
       name: "Overview",
     });
   } else if (to.meta.pastRequired) {
-    //user not logged in, send them to login page
-    router.push({
-      name: "Location Stats",
-    });
+    if (!localStorage.getItem("hasPast")) {
+      //user not logged in, send them to login page
+      router.push({
+        name: "Location Stats",
+      });
+    }
   } else if (to.meta.authRequired) {
     if (!localStorage.getItem("userId")) {
       //user not logged in, send them to login page

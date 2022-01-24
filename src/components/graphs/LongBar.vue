@@ -54,6 +54,31 @@ export default defineComponent({
       default: "",
     },
   },
+  watch: {
+    yaxisData: {
+      immediate: true,
+      handler() {
+        this.series = [
+          {
+            name: this.dataName || this.title,
+            data: this.yaxisData,
+          },
+        ];
+      },
+    },
+    xaxisData: {
+      immediate: true,
+      handler() {
+        this.options = {
+          ...this.options,
+          xaxis: {
+            ...this.options.xaxis,
+            categories: this.xaxisData,
+          },
+        };
+      },
+    },
+  },
   data: function () {
     return {
       options: {

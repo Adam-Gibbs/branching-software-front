@@ -50,6 +50,31 @@ export default defineComponent({
       required: true,
     },
   },
+  watch: {
+    yaxis: {
+      immediate: true,
+      handler() {
+        this.series = [
+          {
+            name: this.dataName,
+            data: this.yaxis,
+          },
+        ];
+      },
+    },
+    xaxis: {
+      immediate: true,
+      handler() {
+        this.options = {
+          ...this.options,
+          xaxis: {
+            ...this.options.xaxis,
+            categories: this.xaxis,
+          },
+        };
+      },
+    },
+  },
   data: function () {
     return {
       options: {
