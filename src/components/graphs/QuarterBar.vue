@@ -50,6 +50,23 @@ export default defineComponent({
       default: "",
     },
   },
+  watch: {
+    yaxisData: {
+      immediate: true,
+      handler() {
+        this.series = [
+          {
+            name: this.dataNameA || this.title,
+            data: this.dataA,
+          },
+          {
+            name: this.dataNameB || "",
+            data: this.dataB,
+          },
+        ];
+      },
+    },
+  },
   methods: {
     getTrend(value: string) {
       if (value.charAt(0) === "-") {

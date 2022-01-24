@@ -99,6 +99,19 @@ export default defineComponent({
       default: "",
     },
   },
+  watch: {
+    yaxisData: {
+      immediate: true,
+      handler() {
+        this.series = [
+          {
+            name: this.dataName || this.title,
+            data: this.yaxisData,
+          },
+        ];
+      },
+    },
+  },
   methods: {
     getTrend(value: string) {
       if (value.charAt(0) === "-") {

@@ -72,6 +72,12 @@ export default defineComponent({
       loading: false,
     };
   },
+  mounted() {
+    console.log("mounted");
+    this.$nextTick(function () {
+      this.sendRequest();
+    });
+  },
   methods: {
     addWarning(text: string) {
       if (!this.warningList.includes(text)) {
@@ -101,7 +107,7 @@ export default defineComponent({
           }
 
           this.loading = false;
-          this.locationData = data.locationData;
+          this.locationData = data.result.locationData;
         })
         .catch(() => {
           this.addWarning("An error occurred, please retry");

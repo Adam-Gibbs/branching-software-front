@@ -24,7 +24,7 @@
   </section>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -47,12 +47,32 @@ export default defineComponent({
     },
   },
   methods: {
-    getTrend(value: string) {
+    getTrend(value) {
       if (value.charAt(0) === "-") {
         return "red";
       } else {
         return "green";
       }
+    },
+  },
+  watch: {
+    yaxisData: {
+      immediate: true,
+      handler() {
+        this.series = [
+          {
+            name: "Current",
+            data: this.yaxisData,
+          },
+          {
+            name: "Burndown Trend",
+            data: [
+              20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3,
+              2, 1,
+            ],
+          },
+        ];
+      },
     },
   },
   data: function () {
