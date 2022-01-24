@@ -4,16 +4,31 @@ module.exports = {
   mode: "jit",
   theme: {
     fontFamily: {
-      sans: "Roboto",
-      display: "Roboto, sans-serif",
-      body: "Roboto, sans-serif",
+      body: '"DM Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+      heading:
+        '"DM Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+      sans: '"DM Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+      serif: 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
     },
+    backgroundColor: (theme) => ({
+      ...theme("colors"),
+      body: "#F1F5FB",
+    }),
+    textColor: (theme) => ({
+      ...theme("colors"),
+      body: "#15181C",
+    }),
     extend: {
       colors: {
-        midGreen: "#30a51b",
-        backgroundGreen: "#e9f5e7",
-        startGrad: "#5a5a2d",
-        endGrad: "#0de30d",
+        green: {
+          main: "#30A51B",
+          highlight: "#3CCE22",
+          light: "#E9F5E7",
+        },
+        red: {
+          main: "#E53935",
+          light: "#FDEEEC",
+        },
       },
     },
   },
