@@ -64,7 +64,6 @@ export default defineComponent({
       this.warningList.splice(this.warningList.indexOf(text), 1);
     },
     sendRequest() {
-      console.log("hi");
       this.loading = true;
       const requestOptions = {
         method: "POST",

@@ -123,7 +123,6 @@ export default defineComponent({
   },
   methods: {
     toggleOpen: function (newValue: boolean) {
-      console.log(this.hasPast);
       this.open = newValue;
     },
     signOut: function () {

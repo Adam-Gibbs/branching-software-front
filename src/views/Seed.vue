@@ -96,13 +96,11 @@ export default defineComponent({
           } else if (link === "/v1/seed/goals") {
             this.sendRequest("/v1/seed/assets");
           } else {
-            console.log(data);
             localStorage.setItem("hasPast", true);
             this.sendRequest("/v1/seed/goals");
           }
         })
-        .catch((e) => {
-          console.log(e);
+        .catch(() => {
           this.addWarning("An error occurred, please retry");
           this.loading = false;
         });

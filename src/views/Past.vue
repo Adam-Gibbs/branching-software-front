@@ -80,7 +80,6 @@ export default defineComponent({
     };
   },
   mounted() {
-    console.log("mounted");
     this.$nextTick(function () {
       this.sendRequest();
     });
