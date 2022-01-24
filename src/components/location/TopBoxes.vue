@@ -7,7 +7,7 @@
             title="Number of ongoing projects"
             icon="file-invoice"
             timeframe="currently"
-            value="8"
+            :value="data.ongoing"
             change="+60"
             link="/add"
           />
@@ -17,7 +17,7 @@
             title="CO<sup>2</sup>e Output in past 24hrs"
             icon="cloud-meatball"
             :timeframe="`since ${yesterday()} yesterday`"
-            value="7.2kg"
+            :value="data.outputDay"
             change="-6"
             comparedTo="the average last year"
           />
@@ -27,7 +27,7 @@
             title="Total CO<sup>2</sup>e Output"
             icon="cloud-meatball"
             timeframe="since 1st January 2022"
-            value="380kg"
+            :value="data.outputTotal"
             change="+12"
           />
         </div>
@@ -42,6 +42,12 @@ import SingleBox from "@/components/data_boxes/Single.vue";
 
 export default defineComponent({
   components: { SingleBox },
+  props: {
+    data: {
+      type: Object,
+      required: true,
+    },
+  },
   methods: {
     yesterday() {
       const time = new Date(Date.now() - 86400 * 1000);
