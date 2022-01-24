@@ -18,7 +18,7 @@
       />
     </div>
     <div class="w-full flex md:w-1/2 px-3 mb-6 md:mb-0 items-center">
-      <add-dropdown
+      <AddDropdown
         title="Asset Type"
         link="/v1/asset-types/all"
         ref="type"
@@ -34,7 +34,7 @@
   </div>
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full md:w-1/2 px-3">
-      <large-text
+      <LargeText
         title="Asset Description"
         placeholder="Information about the asset, to aid in identification"
         ref="description"
@@ -44,9 +44,9 @@
       />
     </div>
     <div class="w-full flex md:w-1/2 px-3 mb-6 md:mb-0 items-center">
-      <image-add
-        title="Asset Type"
-        placeholder="Add an optional image for better description"
+      <ImageAdd
+        title="Asset QR code"
+        placeholder="Scan a QR code to link to this asset"
         ref="image"
         :value="values.image"
         :disable="disable"

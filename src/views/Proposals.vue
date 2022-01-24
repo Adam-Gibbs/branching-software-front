@@ -8,19 +8,19 @@
               commodo purus."
     />
     <Warning
-      class="container px-4 mx-auto"
+      class="container mb-4 mx-auto"
       v-for="item in warningList"
       :text="item"
       :key="item"
       @removeWarning="removeWarning($event)"
     />
-    <section class="pt-8">
+    <section class="pb-8">
       <div class="container px-4 mx-auto">
         <div class="flex flex-wrap -mx-4">
           <Title :loading="asset.id === undefined" :asset="asset" />
           <div class="w-full md:w-1/3 px-4 mb-6 lg:mb-0">
             <!-- TODO get location totals -->
-            <quarter-progress
+            <QuarterProgress
               :loading="asset.id === undefined"
               :progress="'20'"
               title="CO<sup>2</sup>e produced per year"
@@ -29,7 +29,7 @@
             />
           </div>
           <div class="w-full md:w-1/3 px-4 mb-6 lg:mb-0">
-            <quarter-progress
+            <QuarterProgress
               :loading="asset.id === undefined"
               :progress="dateProgressValue(asset).toString()"
               title="Date of expected end of life"
@@ -40,11 +40,11 @@
         </div>
       </div>
     </section>
-    <section class="py-8">
+    <section class="pb-8">
       <div class="container px-4 mx-auto">
         <div class="flex flex-wrap -mx-4">
           <Replies />
-          <proposal-list />
+          <ProposalList />
         </div>
       </div>
     </section>

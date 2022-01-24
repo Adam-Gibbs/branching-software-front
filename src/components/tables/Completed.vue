@@ -2,25 +2,25 @@
   <table class="table-auto w-full" v-show="assetList.length !== 0">
     <thead>
       <tr>
-        <head-item
+        <HeadItem
           :direction="sortDirection"
           title="Original Asset Type"
           :isCol="sortCol === '1'"
           @click="sort('1')"
         />
-        <head-item
+        <HeadItem
           :direction="sortDirection"
           title="Location"
           :isCol="sortCol === '2'"
           @click="sort('2')"
         />
-        <head-item
+        <HeadItem
           :direction="sortDirection"
           title="CO<sup>2</sup>e saved per year"
           :isCol="sortCol === '3'"
           @click="sort('3')"
         />
-        <head-item
+        <HeadItem
           :direction="sortDirection"
           title="Original End of Life"
           :isCol="sortCol === '4'"
@@ -54,28 +54,31 @@
           </p>
         </td>
         <td class="font-medium items-center">
-          <a
+          <button
             class="block w-1/2 ml-10 py-3 text-center text-xs text-white font-bold leading-none bg-green-main hover:bg-green-highlight rounded"
-            :href="`/assets/proposals/${asset.id}`"
+            @click="$router.push(`/assets/proposals/${asset.id}`)"
           >
             <font-awesome-icon
               icon="sitemap"
               class="h-4 w-6 my-auto text-white"
             />
             View Project
-          </a>
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
-  <div class="py-4 text-center" v-show="assetList.length === 0 || loading">
+  <div
+    class="py-4 text-center"
+    v-show="assetList.filter(onlyDone).length === 0 || loading"
+  >
     <font-awesome-icon
       icon="fan"
       class="text-green-main h-16 w-16 animate-spin"
       v-show="loading"
     />
     <p
-      class="inline-flex items-center text-green-main font-medium"
+      class="inline-flex items-center text-green-main font-medium text-sm"
       v-show="!loading"
     >
       <font-awesome-icon icon="thermometer-full" class="w-5 h-5 mr-1" />

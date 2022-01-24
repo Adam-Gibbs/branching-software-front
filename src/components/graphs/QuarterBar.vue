@@ -1,7 +1,7 @@
 <template>
   <div class="p-6 bg-white shadow rounded">
     <div class="flex mb-3 items-center justify-between">
-      <h3 class="text-gray-500">{{ title }}</h3>
+      <h3 class="text-gray-500" v-html="title" />
     </div>
     <div class="flex items-center mb-3">
       <span class="text-4xl font-bold">{{ value }}</span>
@@ -12,12 +12,7 @@
         >{{ change }}</span
       >
     </div>
-    <apexchart
-      height="100"
-      :options="options"
-      :series="series"
-      type="bar"
-    ></apexchart>
+    <apexchart height="100" :options="options" :series="series" type="bar" />
   </div>
 </template>
 
@@ -30,25 +25,46 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    yaxisData: {
-      type: Array,
-      required: true,
-    },
     value: {
       type: String,
       required: true,
     },
-    change: {
-      type: String,
-      default: "",
+    dataA: {
+      type: Array,
+      required: true,
     },
     dataNameA: {
       type: String,
       default: "",
     },
+    dataB: {
+      type: Array,
+      default: () => [],
+    },
     dataNameB: {
       type: String,
       default: "",
+    },
+    change: {
+      type: String,
+      default: "",
+    },
+  },
+  watch: {
+    dataA: {
+      immediate: true,
+      handler() {
+        this.series = [
+          {
+            name: this.dataNameA || this.title,
+            data: this.dataA,
+          },
+          {
+            name: this.dataNameB || "",
+            data: this.dataB,
+          },
+        ];
+      },
     },
   },
   methods: {
@@ -64,21 +80,30 @@ export default defineComponent({
     return {
       options: {
         chart: {
-          stacked: true,
           sparkline: {
             enabled: true,
           },
         },
+        tooltip: {
+          x: {
+            show: false,
+          },
+        },
         colors: ["#30A51B", "#2D70F5"],
+        plotOptions: {
+          bar: {
+            borderRadius: 10,
+          },
+        },
       },
       series: [
         {
           name: this.dataNameA || this.title,
-          data: [20, 50, 18, 50, 30, 40, 30, 40],
+          data: this.dataA,
         },
         {
           name: this.dataNameB || "",
-          data: [30, 0, 32, 0, 20, 10, 20, 10],
+          data: this.dataB,
         },
       ],
     };

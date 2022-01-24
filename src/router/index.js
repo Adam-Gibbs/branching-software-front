@@ -3,11 +3,12 @@ import { createRouter, createWebHistory } from "vue-router";
 const routes = [
   {
     path: "/",
-    redirect: "/overview",
+    redirect: "/location",
     name: "Base",
   },
   {
     path: "/overview",
+    redirect: "/location",
     name: "Overview",
     component: () => import("../views/Overview.vue"),
     meta: {
@@ -18,16 +19,18 @@ const routes = [
     path: "/signin",
     name: "Sign In",
     component: () => import("../views/SignIn.vue"),
-    meta: {
-      authRequired: false,
-    },
   },
   {
     path: "/signup",
     name: "Sign Up",
     component: () => import("../views/SignUp.vue"),
+  },
+  {
+    path: "/seed",
+    name: "Seed",
+    component: () => import("../views/Seed.vue"),
     meta: {
-      authRequired: false,
+      authRequired: true,
     },
   },
   {
@@ -36,12 +39,13 @@ const routes = [
     component: () => import("../views/Past.vue"),
     meta: {
       authRequired: true,
+      pastRequired: true,
     },
   },
   {
-    path: "/current",
-    name: "Current Stats",
-    component: () => import("../views/Current.vue"),
+    path: "/location",
+    name: "Location Stats",
+    component: () => import("../views/Location.vue"),
     meta: {
       authRequired: true,
     },
@@ -135,6 +139,13 @@ router.beforeEach((to, from, next) => {
     router.push({
       name: "Overview",
     });
+  } else if (to.meta.pastRequired) {
+    if (!localStorage.getItem("hasPast")) {
+      //user not logged in, send them to login page
+      router.push({
+        name: "Location Stats",
+      });
+    }
   } else if (to.meta.authRequired) {
     if (!localStorage.getItem("userId")) {
       //user not logged in, send them to login page

@@ -19,19 +19,25 @@
           </span>
         </div>
         <div class="w-full">
-          <div class="flex mb-2">
+          <div class="flex">
             <h3 class="text-white font-medium">
               Are you sure you would like to delete {{ name }}
             </h3>
             <button
-              class="ml-auto inline-block w-full md:w-auto px-3 py-1 font-small text-white bg-red-800 hover:bg-red-700 rounded transition"
+              class="ml-auto text-sm inline-block w-full md:w-auto px-3 py-1 font-small text-white bg-red-800 hover:bg-red-700 rounded transition"
               @click="deleteClick()"
             >
-              Confirm Delete
+              <font-awesome-icon
+                icon="fan"
+                class="h-4 w-4 px-10 animate-spin"
+                v-show="loading"
+              />
+              <p v-if="!loading">Confirm Delete</p>
             </button>
             <button
-              class="ml-2 inline-block w-full md:w-auto px-3 py-1 font-small text-white bg-red-500 hover:bg-red-700 rounded transition"
+              class="ml-2 text-sm inline-block w-full md:w-auto px-3 py-1 font-small text-white bg-red-500 hover:bg-red-700 rounded transition"
               @click="emitRemoveDelete()"
+              :disabled="loading"
             >
               Cancel
             </button>
@@ -56,6 +62,11 @@ export default defineComponent({
       required: true,
     },
   },
+  data: function () {
+    return {
+      loading: false,
+    };
+  },
   methods: {
     emitRemoveDelete() {
       this.$emit("removeDelete", this.deleteLink);
@@ -64,6 +75,7 @@ export default defineComponent({
       this.$emit("addWarning", message);
     },
     deleteClick() {
+      this.loading = true;
       const requestOptions = {
         method: "POST",
         body: JSON.stringify({
@@ -77,13 +89,16 @@ export default defineComponent({
 
           // check for error response
           if (await !response.ok) {
+            this.loading = false;
             this.emitAddWarning(data.message);
             return;
           }
 
+          this.loading = false;
           this.emitRemoveDelete();
         })
         .catch(() => {
+          this.loading = false;
           this.emitAddWarning("An error occurred, please retry");
         });
     },

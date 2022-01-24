@@ -10,18 +10,17 @@
       <div class="relative">
         <div class="absolute inset-0 h-full ml-1 w-px px-px bg-gray-300"></div>
         <div class="relative">
-          <reply-item v-for="item in replies" :key="item" :reply="item" />
+          <ReplyItem v-for="item in replies" :key="item" :reply="item" />
         </div>
         <div
           class="absolute bottom-0 pt-14 w-full text-center bg-white bg-opacity-50"
         >
-          <a
+          <button
             class="inline-flex items-center py-3 px-4 text-sm text-white bg-green-main hover:bg-green-highlight rounded transition"
-            href="#"
           >
             <font-awesome-icon icon="arrow-down" class="mr-2 h-3 w-3" />
             <span>View Previous Messages</span>
-          </a>
+          </button>
         </div>
       </div>
     </div>

@@ -87,22 +87,29 @@
             </button>
           </form>
           <div class="block mt-3">
-            <a class="m-3 text-xs text-green-main text-center" href="/signin">
+            <button
+              class="m-3 text-xs text-green-main text-center"
+              @click="$router.push('/signin')"
+            >
               Already have an account? Sign In
-            </a>
+            </button>
           </div>
         </div>
         <div>
           <p class="text-xs text-white text-center">
-            <a
+            <button
               class="underline hover:text-green-highlight"
-              href="/privacy-policy"
-              >Privacy Policy</a
+              @click="$router.push('/privacy-policy')"
             >
+              Privacy Policy
+            </button>
             and
-            <a class="underline hover:text-green-highlight" href="/terms-of-use"
-              >Terms of Use</a
+            <button
+              class="underline hover:text-green-highlight"
+              @click="$router.push('/terms-of-use')"
             >
+              Terms of Use
+            </button>
           </p>
         </div>
       </div>
@@ -159,8 +166,9 @@ export default defineComponent({
     },
     signPass(response) {
       localStorage.setItem("userId", response.result.id);
+      localStorage.setItem("hasPast", false);
       router.push({
-        name: "Overview",
+        name: "Seed",
       });
     },
     sendRequest() {

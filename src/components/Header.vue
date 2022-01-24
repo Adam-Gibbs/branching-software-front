@@ -16,8 +16,8 @@
         </div>
       </div>
       <div class="w-full lg:w-auto ml-auto px-3">
-        <header-button title="Settings" icon="cog" path="/settings" />
-        <header-button
+        <HeaderButton title="Settings" icon="cog" path="/settings" />
+        <HeaderButton
           title="Report"
           icon="file-download"
           path="/report"

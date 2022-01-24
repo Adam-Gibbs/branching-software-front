@@ -8,13 +8,13 @@
               commodo purus."
     />
     <Warning
-      class="container px-4 mx-auto"
+      class="container mb-4 mx-auto"
       v-for="item in warningList"
       :text="item"
       :key="item"
       @removeWarning="removeWarning($event)"
     />
-    <section class="py-8">
+    <section class="pb-8">
       <div class="container px-4 mx-auto">
         <div class="pt-4 bg-white shadow rounded">
           <div class="px-6 border-b border-blue-50">

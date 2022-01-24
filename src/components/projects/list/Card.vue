@@ -14,21 +14,21 @@
     </div>
     <div class="flex justify-between">
       <div class="flex">
-        <p class="flex mr-4 items-center text-xs text-gray-500" href="#">
+        <p class="flex mr-4 items-center text-xs text-gray-500">
           <font-awesome-icon
             icon="comment"
             class="mr-2 h-3 w-3 text-gray-400"
           />
           <span>Replies: {{ project.replies }}</span>
         </p>
-        <p class="flex mr-4 items-center text-xs text-gray-500" href="#">
+        <p class="flex mr-4 items-center text-xs text-gray-500">
           <font-awesome-icon
             icon="paperclip"
             class="mr-2 h-3 w-3 text-gray-400"
           />
           <span>Proposals: {{ project.proposals }}</span>
         </p>
-        <p class="flex items-center text-xs text-gray-500" href="#">
+        <p class="flex items-center text-xs text-gray-500">
           <font-awesome-icon icon="check" class="mr-2 h-3 w-3 text-gray-400" />
           <span>Accepted: {{ project.accepted }}</span>
         </p>

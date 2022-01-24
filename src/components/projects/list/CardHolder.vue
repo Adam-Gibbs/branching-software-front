@@ -1,5 +1,5 @@
 <template>
-  <section class="py-8">
+  <section class="pb-8">
     <div class="container px-4 mx-auto">
       <div class="flex flex-wrap -m-4">
         <div
@@ -21,7 +21,7 @@
               @click="goTo(project.id)"
             />
           </div>
-          <add-button title="Add New Project" />
+          <AddButton title="Add New Project" />
         </div>
         <div
           class="sm:w-full hide p-4"
@@ -40,7 +40,7 @@
             :project="project"
             @click="goTo(project.id)"
           />
-          <add-button title="Add New Project" />
+          <AddButton title="Add New Project" />
         </div>
         <div
           class="sm:w-full p-4"
@@ -59,7 +59,7 @@
             :project="project"
             @click="goTo(project.id)"
           />
-          <add-button title="Add New Project" />
+          <AddButton title="Add New Project" />
         </div>
       </div>
     </div>

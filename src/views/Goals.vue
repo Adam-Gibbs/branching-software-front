@@ -8,14 +8,18 @@
               commodo purus."
     />
     <Warning
-      class="container px-4 mx-auto"
+      class="container mb-4 mx-auto"
       v-for="item in warningList"
       :text="item"
       :key="item"
       @removeWarning="removeWarning($event)"
     />
-    <GoalRows :goals="goals" v-if="!loading" />
-    <section class="py-8" v-if="loading">
+    <GoalRows
+      :goals="goals"
+      v-if="!loading || goals.length > 0"
+      @reload="sendRequest"
+    />
+    <section class="pb-8" v-if="loading && goals.length === 0">
       <div class="container px-4 mx-auto">
         <font-awesome-icon
           icon="fan"
@@ -60,6 +64,7 @@ export default defineComponent({
       this.warningList.splice(this.warningList.indexOf(text), 1);
     },
     sendRequest() {
+      this.loading = true;
       const requestOptions = {
         method: "POST",
         body: JSON.stringify({

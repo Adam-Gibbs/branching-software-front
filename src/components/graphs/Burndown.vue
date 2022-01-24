@@ -1,12 +1,9 @@
 <template>
   <section class="pb-8">
     <div class="container px-4 mx-auto">
-      <div class="bg-white shadow rounded">
-        <div class="flex flex-wrap items-center py-5 px-6">
-          <h3
-            class="w-full md:w-auto mb-4 md:mb-0 text-2xl font-bold"
-            v-html="title"
-          />
+      <div class="bg-white rounded">
+        <div class="flex items-center py-5 px-6 border-b">
+          <h3 class="text-2xl font-bold" v-html="title"></h3>
           <div
             v-if="dropdown.length > 0"
             class="ml-auto inline-block py-2 px-3 border rounded text-xs text-gray-500"
@@ -17,9 +14,8 @@
           </div>
         </div>
         <apexchart
-          class="p-6"
-          height="200"
-          type="bar"
+          height="350"
+          type="line"
           :options="options"
           :series="series"
         />
@@ -28,7 +24,7 @@
   </section>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -41,10 +37,6 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    xaxisData: {
-      type: Array,
-      required: true,
-    },
     yaxisData: {
       type: Array,
       required: true,
@@ -54,28 +46,32 @@ export default defineComponent({
       default: "",
     },
   },
+  methods: {
+    getTrend(value) {
+      if (value.charAt(0) === "-") {
+        return "red";
+      } else {
+        return "green";
+      }
+    },
+  },
   watch: {
     yaxisData: {
       immediate: true,
       handler() {
         this.series = [
           {
-            name: this.dataName || this.title,
+            name: "Current",
             data: this.yaxisData,
           },
-        ];
-      },
-    },
-    xaxisData: {
-      immediate: true,
-      handler() {
-        this.options = {
-          ...this.options,
-          xaxis: {
-            ...this.options.xaxis,
-            categories: this.xaxisData,
+          {
+            name: "Burndown Trend",
+            data: [
+              20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3,
+              2, 1,
+            ],
           },
-        };
+        ];
       },
     },
   },
@@ -83,44 +79,46 @@ export default defineComponent({
     return {
       options: {
         chart: {
-          toolbar: {
-            show: false,
+          zoom: {
+            type: "x",
+            enabled: true,
+            autoScaleYaxis: true,
           },
-        },
-        grid: {
-          show: true,
+          toolbar: {
+            autoSelected: "zoom",
+            tools: {
+              download: false,
+              selection: false,
+              zoomin: false,
+              zoomout: false,
+            },
+          },
         },
         dataLabels: {
           enabled: false,
         },
-        colors: ["#30A51B"],
-        xaxis: {
-          type: "datetime",
-          categories: this.xaxisData,
-          labels: {
-            show: true,
-            hideOverlappingLabels: false,
-            showDuplicates: true,
-            trim: false,
-          },
+        markers: {
+          size: 0,
         },
-        yaxis: {
-          opposite: true,
-          labels: {
-            show: true,
-            align: "right",
-          },
+        legend: {
+          show: false,
         },
-        plotOptions: {
-          bar: {
-            borderRadius: 10,
-          },
+        colors: ["#30a51b", "#ef4444"],
+        stroke: {
+          width: 3,
         },
       },
       series: [
         {
-          name: this.dataName || this.title,
+          name: "Current",
           data: this.yaxisData,
+        },
+        {
+          name: "Burndown Trend",
+          data: [
+            20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2,
+            1,
+          ],
         },
       ],
     };

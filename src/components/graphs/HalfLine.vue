@@ -48,12 +48,7 @@
           </div>
         </div>
       </div>
-      <apexchart
-        height="180"
-        type="area"
-        :options="options"
-        :series="series"
-      ></apexchart>
+      <apexchart height="180" type="area" :options="options" :series="series" />
     </div>
   </div>
 </template>
@@ -104,6 +99,19 @@ export default defineComponent({
       default: "",
     },
   },
+  watch: {
+    yaxisData: {
+      immediate: true,
+      handler() {
+        this.series = [
+          {
+            name: this.dataName || this.title,
+            data: this.yaxisData,
+          },
+        ];
+      },
+    },
+  },
   methods: {
     getTrend(value: string) {
       if (value.charAt(0) === "-") {
@@ -121,6 +129,11 @@ export default defineComponent({
             enabled: true,
           },
         },
+        tooltip: {
+          x: {
+            show: false,
+          },
+        },
         colors: ["#30A51B"],
         fill: {
           type: ["solid"],
@@ -129,15 +142,6 @@ export default defineComponent({
         stroke: {
           curve: "straight",
           width: 2,
-        },
-        __variants: {
-          "dark-bg": {
-            colors: ["#8880EB"],
-            fill: {
-              type: ["solid"],
-              colors: ["#6056E4"],
-            },
-          },
         },
       },
       series: [

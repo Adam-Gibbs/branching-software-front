@@ -1,23 +1,25 @@
 <template>
   <Warning
+    class="container mb-4 mx-auto"
     v-for="item in warningList"
     :text="item"
     :key="item"
     @removeWarning="removeWarning($event)"
   />
   <Delete
+    class="mb-4"
     v-for="item in deleteList"
     :deleteLink="item"
     :key="item"
     @removeDelete="removeDelete($event)"
     @addWarning="addWarning($event)"
   />
-  <section class="py-8">
+  <section class="pb-8">
     <div class="container px-4 mx-auto">
       <add-button class="mb-4" title="Add New Goals" link="/goals/add" />
       <div class="flex flex-wrap -m-4">
         <div v-for="goal in goals" :key="goal" class="w-full lg:w-1/2 p-4">
-          <goal-item
+          <GoalItem
             :change="randomChar() + random(1, 20).toString() + '%'"
             :subtitle="goal.type"
             :progress="random(0, 100)"
@@ -50,6 +52,7 @@ export default defineComponent({
   data: function () {
     return {
       deleteList: [],
+      warningList: [],
     };
   },
   methods: {
@@ -75,6 +78,7 @@ export default defineComponent({
     },
     removeDelete(link) {
       this.deleteList.splice(this.deleteList.indexOf(link), 1);
+      this.$emit("reload");
     },
   },
 });

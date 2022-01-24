@@ -15,7 +15,7 @@
           </p>
         </div>
       </div>
-      <proposal-item
+      <ProposalItem
         v-for="proposal in proposals"
         :key="proposal"
         :proposal="proposal"

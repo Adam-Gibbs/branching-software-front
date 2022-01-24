@@ -1,15 +1,15 @@
 <template>
   <Warning
-    class="container px-4 mx-auto"
+    class="container mb-4 mx-auto"
     v-for="item in warningList"
     :text="item"
     :key="item"
     @removeWarning="removeWarning($event)"
   />
-  <section class="py-8" :class="{ 'blur-sm': disable }">
+  <section class="pb-8" :class="{ 'blur-sm': disable }">
     <div class="container px-4 mx-auto">
       <div class="p-6 bg-white shadow rounded">
-        <page-1
+        <Page1
           v-if="page === 1"
           ref="page1"
           :values="data"
@@ -20,7 +20,7 @@
           @addWarning="addWarning($event)"
           @removeWarning="removeWarning($event)"
         />
-        <page-2
+        <Page2
           v-if="page === 2"
           ref="page2"
           :values="data"
@@ -31,7 +31,7 @@
           @addWarning="addWarning($event)"
           @removeWarning="removeWarning($event)"
         />
-        <page-3
+        <Page3
           v-if="page === 3"
           ref="page3"
           :values="data"
@@ -57,6 +57,15 @@ export default defineComponent({
     Page1,
     Page2,
     Page3,
+  },
+  data() {
+    return {
+      page: 1,
+      data: {},
+      warningList: [],
+      loading: false,
+      disable: false,
+    };
   },
   methods: {
     addWarning(text) {
@@ -139,15 +148,6 @@ export default defineComponent({
     previous() {
       this.page -= 1;
     },
-  },
-  data() {
-    return {
-      page: 1,
-      data: {},
-      warningList: [],
-      loading: false,
-      disable: false,
-    };
   },
 });
 </script>

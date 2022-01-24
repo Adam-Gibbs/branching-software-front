@@ -2,8 +2,8 @@
   <Nav />
   <div class="mx-auto lg:ml-80">
     <Header
-      icon="history"
-      title="Past Year"
+      icon="map-marker-alt"
+      title="Location Stats"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non
               commodo purus."
     />
@@ -14,27 +14,12 @@
       :key="item"
       @removeWarning="removeWarning($event)"
     />
-    <TopBoxes :data="pastData" />
-    <LineWithData
-      title="Assets replaced over past year"
-      :xaxis="pastData.assetsReplaced.xaxis"
-      :yaxis="pastData.assetsReplaced.yaxis"
-      dataName="Asset replacements"
-      :boxData="[
-        { name: 'Total assets replaced', value: pastData.totalAssetsReplaced },
-        { name: 'Total CO<sup>2</sup>e saved', value: pastData.totalCO2Saved },
-        {
-          name: 'Number of affected locations',
-          value: pastData.affectedLocations,
-        },
-        { name: 'Total cost', value: pastData.totalCost },
-      ]"
+    <TopBoxes :data="locationData" />
+    <Burndown
+      title="Burndown to date of Net Zero"
+      :yaxisData="locationData.burndown.yaxis"
     />
-    <LongBar
-      title="CO<sup>2</sup>e output each week of the last year"
-      :xaxisData="pastData.outputEachWeek.xaxis"
-      :yaxisData="pastData.outputEachWeek.yaxis"
-    />
+    <LineMix :data="locationData" />
   </div>
 </template>
 
@@ -43,9 +28,9 @@ import { defineComponent } from "vue";
 import Nav from "@/components/Nav.vue";
 import Header from "@/components/Header.vue";
 import Warning from "@/components/alerts/Warning.vue";
-import TopBoxes from "@/components/past/TopBoxes.vue";
-import LineWithData from "@/components/graphs/LineWithData.vue";
-import LongBar from "@/components/graphs/LongBar.vue";
+import TopBoxes from "@/components/location/TopBoxes.vue";
+import LineMix from "@/components/location/LineMix.vue";
+import Burndown from "@/components/graphs/Burndown.vue";
 
 export default defineComponent({
   components: {
@@ -53,27 +38,35 @@ export default defineComponent({
     Header,
     Warning,
     TopBoxes,
-    LineWithData,
-    LongBar,
+    LineMix,
+    Burndown,
   },
   data() {
     return {
-      pastData: {
-        assetsAdded: "0",
-        totalCO2Saved: "0kg",
-        assetsReplaced: {
-          xaxis: [],
+      locationData: {
+        burndown: {
           yaxis: [],
         },
-        totalCO2Output: "0kg",
-        totalAssetsReplaced: "0",
-        outputEachWeek: {
-          xaxis: [],
-          yaxis: [],
+        quarterProgress: {
+          value: "0kg",
+          progress: "0",
         },
-        co2Reduction: "0kg",
-        affectedLocations: "0",
-        totalCost: "£0",
+        ongoing: "0",
+        halfline: {
+          changeB: "+0%",
+          changeA: "+0%",
+          valueB: "0",
+          yaxis: [],
+          valueA: "0",
+        },
+        outputDay: "0kg",
+        quarterBar: {
+          dataA: [],
+          value: "0kg",
+          change: "+0%",
+          dataB: [],
+        },
+        outputTotal: "0kg",
       },
       warningList: Array<string>(),
       loading: false,
@@ -113,7 +106,7 @@ export default defineComponent({
           }
 
           this.loading = false;
-          this.pastData = data.result.pastData;
+          this.locationData = data.result.locationData;
         })
         .catch(() => {
           this.addWarning("An error occurred, please retry");

@@ -13,16 +13,16 @@
             Sorry! We are unable to find the page you are looking for
           </p>
           <div class="flex flex-wrap items-center justify-center">
-            <a
+            <button
               class="inline-flex font-bold w-full sm:w-auto mb-6 sm:mb-0 sm:mr-8 items-center justify-center py-4 px-6 rounded-full bg-yellow-300 hover:bg-yellow-400 transform"
-              href="/overview"
+              @click="$router.push('/location')"
             >
               <font-awesome-icon
                 icon="long-arrow-alt-left"
                 class="mr-2 h-6 font-heading text-gray-700"
               />
               <span class="text-sm font-heading">Back to home</span>
-            </a>
+            </button>
             <button
               class="inline-flex font-bold cursor-pointer items-center text-white hover:underline"
               @click="reloadPage"

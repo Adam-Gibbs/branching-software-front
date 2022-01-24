@@ -8,7 +8,7 @@
           height="250"
           :options="chartOptions"
           :series="series"
-        ></apexchart>
+        />
       </div>
     </div>
   </div>
