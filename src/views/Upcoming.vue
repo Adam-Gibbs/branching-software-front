@@ -109,7 +109,7 @@ export default defineComponent({
   data: () => ({
     completedTab: false,
     warningList: Array<string>(),
-    loading: false,
+    loading: true,
     assets: Array<any>(),
   }),
   mounted() {

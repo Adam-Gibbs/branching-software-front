@@ -60,6 +60,7 @@ export default defineComponent({
       this.warningList.splice(this.warningList.indexOf(text), 1);
     },
     sendRequest() {
+      this.loading = true;
       const requestOptions = {
         method: "POST",
         body: JSON.stringify({
