@@ -67,7 +67,7 @@ export default defineComponent({
   methods: {
     next() {
       router.push({
-        name: "Past Year",
+        name: "Location Stats",
       });
     },
     sendRequest(link) {
