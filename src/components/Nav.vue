@@ -27,12 +27,12 @@
           Dashboard
         </h3>
         <ul class="mb-8 text-sm font-medium">
-          <Link
+          <!-- <Link
             title="Overview"
             icon="infinity"
             path="/overview"
             @toggleOpen="toggleOpen($event)"
-          />
+          /> -->
           <Link
             title="Location Stats"
             icon="map-marker-alt"

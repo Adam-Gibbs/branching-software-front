@@ -15,7 +15,7 @@
           <div class="flex flex-wrap items-center justify-center">
             <button
               class="inline-flex font-bold w-full sm:w-auto mb-6 sm:mb-0 sm:mr-8 items-center justify-center py-4 px-6 rounded-full bg-yellow-300 hover:bg-yellow-400 transform"
-              @click="$router.push('/overview')"
+              @click="$router.push('/location')"
             >
               <font-awesome-icon
                 icon="long-arrow-alt-left"

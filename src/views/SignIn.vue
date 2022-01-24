@@ -136,7 +136,7 @@ export default defineComponent({
         router.push({ name: this.$route.query.go });
       } else {
         router.push({
-          name: "Overview",
+          name: "Location Stats",
         });
       }
     },
