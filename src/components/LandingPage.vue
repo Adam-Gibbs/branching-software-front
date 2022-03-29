@@ -36,14 +36,7 @@
             <div
               class="pt-6 text-base leading-6 font-bold sm:text-lg sm:leading-7"
             >
-              <Buttons
-                v-show="!showSubscribe"
-                @subscribeToggle="swapComponent"
-              />
-              <Subscribe
-                v-show="showSubscribe"
-                @subscribeToggle="swapComponent"
-              />
+              <Buttons />
             </div>
           </div>
         </div>
@@ -55,7 +48,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import Buttons from "./Buttons.vue";
-import Subscribe from "./Subscribe.vue";
 
 export default defineComponent({
   name: "App",
@@ -66,7 +58,6 @@ export default defineComponent({
   },
   components: {
     Buttons,
-    Subscribe,
   },
   methods: {
     swapComponent() {
