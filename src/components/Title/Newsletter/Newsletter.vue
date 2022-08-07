@@ -1,5 +1,5 @@
 <template>
-  <section class="py-28 bg-black overflow-hidden">
+  <section id="register" class="py-28 bg-black overflow-hidden">
     <div class="container mx-auto px-4">
       <div class="max-w-lg mx-auto text-center mb-14">
         <img

@@ -6,14 +6,14 @@
         <li class="p-5">
           <a
             class="font-heading text-base text-white hover:text-gray-700"
-            href="#"
+            href="#features"
             >Features</a
           >
         </li>
         <li class="p-5">
           <a
             class="font-heading text-base text-white hover:text-gray-700"
-            href="#"
+            href="#register"
             >Register</a
           >
         </li>

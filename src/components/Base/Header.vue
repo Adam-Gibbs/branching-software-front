@@ -8,21 +8,22 @@
     <div class="w-auto hidden lg:block">
       <ul class="flex items-center mr-10">
         <li class="font-heading mr-9 text-white hover:text-gray-200 text-lg">
-          <a href="#">Features</a>
+          <a href="#features">Features</a>
         </li>
         <li class="font-heading mr-9 text-white hover:text-gray-200 text-lg">
-          <a href="#">Register</a>
+          <a href="#register">Register</a>
         </li>
       </ul>
     </div>
     <div class="w-auto">
       <div class="flex flex-wrap items-center">
         <div class="w-auto hidden lg:block">
-          <button
+          <a
             class="font-heading py-3.5 px-5 uppercase text-xs trackingx text-white font-bold bg-white bg-opacity-20 hover:bg-opacity-10 transition ease-in rounded-md"
+            href="#register"
           >
             Get a head start
-          </button>
+          </a>
         </div>
         <div class="w-auto lg:hidden">
           <!-- Burger -->

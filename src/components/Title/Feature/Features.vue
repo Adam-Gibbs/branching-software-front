@@ -1,5 +1,5 @@
 <template>
-  <section class="relative py-24 overflow-hidden bg-gray-100">
+  <section id="features" class="relative py-24 overflow-hidden bg-gray-100">
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap items-center -m-6">
         <TitleFeatureImage />
