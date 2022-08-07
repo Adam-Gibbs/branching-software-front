@@ -1,7 +1,5 @@
 module.exports = {
-  purge: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   content: ["./src/**/*.{html,js}"],
-  mode: "jit",
   theme: {
     fontFamily: {
       sans: "Roboto",
@@ -17,6 +15,5 @@ module.exports = {
       },
     },
   },
-  variants: {},
   plugins: [],
 };
