@@ -1,15 +1,15 @@
 <template>
-  <LandingPage />
+  <Title />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import LandingPage from "@/components/LandingPage.vue";
+import Title from "@/components/Title/Title.vue";
 
 export default defineComponent({
   name: "App",
   components: {
-    LandingPage,
+    Title,
   },
 });
 </script>
